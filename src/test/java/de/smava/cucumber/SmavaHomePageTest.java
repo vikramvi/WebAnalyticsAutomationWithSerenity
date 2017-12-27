@@ -8,7 +8,4 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(features="src/test/resources/features/SmavaWebAnalyticsUserStories.feature")
 public class SmavaHomePageTest {
-
-    public static int GMTCount = 0;
-
 }

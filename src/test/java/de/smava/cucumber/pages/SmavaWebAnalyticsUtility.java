@@ -17,7 +17,8 @@ public class SmavaWebAnalyticsUtility extends PageObject {
 
     private static SoftAssertions softAssertions = null;
     Multimap<String, String> multimap;
-    private static Integer oldGMTCount = 0;
+    private static int oldGMTCount = 0;
+    private static int GMTCount = 0;
 
     public void verifyGTMValues(String pageName){
         try{
@@ -51,8 +52,8 @@ public class SmavaWebAnalyticsUtility extends PageObject {
             String keyTemp;
             String valueTemp;
 
-            oldGMTCount = SmavaHomePageTest.GMTCount;
-            SmavaHomePageTest.GMTCount = myList.size();
+            oldGMTCount = GMTCount;
+            GMTCount = myList.size();
 
             //To ignore GMT ojbects from earlier pages
             if(pageName.equals("SmavaKreditPage") || pageName.equals("SmavaOfferPage")){
