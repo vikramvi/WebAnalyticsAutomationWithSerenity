@@ -17,6 +17,7 @@ public class SmavaWebAnalyticsUtility extends PageObject {
 
     private static SoftAssertions softAssertions = null;
     Multimap<String, String> multimap;
+    private static Integer oldGMTCount = 0;
 
     public void verifyGTMValues(String pageName){
         try{
@@ -33,11 +34,7 @@ public class SmavaWebAnalyticsUtility extends PageObject {
             //ArrayList<String> myList = new ArrayList<String>();
             ArrayList<Map<String, String>> myList = new ArrayList<>();
 
-            ArrayList<Map<String, String>> myList2 = new ArrayList<>();
-
-
             myList =  (ArrayList) js.executeScript("return window.smavaGoTaMa2016");
-            myList2 = myList;
 
 
             //HashMap don’t allow duplicate keys
@@ -54,8 +51,13 @@ public class SmavaWebAnalyticsUtility extends PageObject {
             String keyTemp;
             String valueTemp;
 
-
+            oldGMTCount = SmavaHomePageTest.GMTCount;
             SmavaHomePageTest.GMTCount = myList.size();
+
+            //To ignore GMT ojbects from earlier pages
+            if(pageName.equals("SmavaKreditPage") || pageName.equals("SmavaOfferPage")){
+                oldGMTCount = 0;
+            }
 
 
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
@@ -64,21 +66,25 @@ public class SmavaWebAnalyticsUtility extends PageObject {
 
 
             for(int a=0; a < myList.size(); a++) {
-                System.out.println("-----------------  Key Index = " + a);
+
                 try {
 
-                    for (String key : myList.get(a).keySet()) {
-                        System.out.println(key + "      " + String.valueOf(myList.get(a).get(key)));
+                       if(a >= oldGMTCount) {
+                           System.out.println("-----------------  Key Index = " + a);
+                               for (String key : myList.get(a).keySet()) {
 
-                        //keyTemp = key;
-                        //valueTemp = String.valueOf( myList.get(a).get(key).toString() );
+                                   System.out.println(key + "      " + String.valueOf(myList.get(a).get(key)));
 
-                        //actualGMTData.put(key, String.valueOf( myList.get(a).get(key)) );
+                                   //keyTemp = key;
+                                   //valueTemp = String.valueOf( myList.get(a).get(key).toString() );
 
-                        //working
-                        multimap.put(key, String.valueOf( myList.get(a).get(key)) );
+                                   //actualGMTData.put(key, String.valueOf( myList.get(a).get(key)) );
 
-                    }
+                                   //working
+                                   multimap.put(key, String.valueOf(myList.get(a).get(key)));
+
+                               }
+                       }
 
                 }catch (Exception e){
                     //e.printStackTrace();
@@ -96,22 +102,6 @@ public class SmavaWebAnalyticsUtility extends PageObject {
             }
 
 
-            //FAILS in case assertion fails but test case should continue execution
-            //assertThat( isValuePresent(multimap, "gtm.uniqueEventId", "5123") ).isTrue();
-
-
-            /*//http://joel-costigliola.github.io/assertj/core/api/org/assertj/core/api/SoftAssertions.html
-            softAssertions = new SoftAssertions();
-
-            softAssertions.assertThat(isValuePresent(multimap, "affiliateChannel", "NA")).as("affiliateChannel").isEqualTo(true);
-
-            softAssertions.assertThat(isValuePresent(multimap, "channel", "smava intern")).as("channel").isEqualTo(true);
-
-            softAssertions.assertThat(isValuePresent(multimap, "gtm.uniqueEventId", "5123")).as("gtm.uniqueEventId").isEqualTo(true);
-
-            softAssertions.assertAll();*/
-
-            //SmavaHomePageSoftAssertions();
 
             switch(pageName){
                 case "SmavaHomePage":

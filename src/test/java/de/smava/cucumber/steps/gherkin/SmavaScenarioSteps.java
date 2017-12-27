@@ -48,9 +48,6 @@ public class SmavaScenarioSteps {
     @Given("User is on smava home page")
     public void gotoSmavaHomePage(){
         smavaHomePageCucumberSteps.open_smava_home_page();
-
-
-        smavaHomePageCucumberSteps.verifyGTMDataForSmavaHomePage();
     }
 
     @Given("User is on smava mobile integration page")
@@ -79,6 +76,7 @@ public class SmavaScenarioSteps {
 
     @When("User goes through registration route to get offer")
     public void completeRegistrationRouteAndFetchGTMData(){
+        smavaHomePageCucumberSteps.verifyGTMDataForSmavaHomePage();
         smavaHomePageCucumberSteps.user_enters_loanSearchInfo();
 
         //Kredit
@@ -108,12 +106,12 @@ public class SmavaScenarioSteps {
 
         //Angebote Vergleichen
         smavaAngeboteVergleichenSteps.verifyGTMDataForSmavaAngeboteVergleichenPage();
-        //smavaAngeboteVergleichenSteps.completeAngeboteVergleichenSteps();
+        smavaAngeboteVergleichenSteps.completeAngeboteVergleichenSteps();
 
 
         //Offer page
-        //smavaOfferPageSteps.isOfferPageLoadedSuccessfully();
-        //smavaOfferPageSteps.verifyGTMDataForSmavaSmavaOfferPage();
+        smavaOfferPageSteps.isOfferPageLoadedSuccessfully();
+        smavaOfferPageSteps.verifyGTMDataForSmavaSmavaOfferPage();
     }
 
     //--------------------------- THEN -----------------------------------
