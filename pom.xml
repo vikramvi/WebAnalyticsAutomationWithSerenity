@@ -5,18 +5,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.smava</groupId>
-    <artifactId>UIAutomation</artifactId>
+    <artifactId>Web Analytics Automation Regression Testing</artifactId>
     <version>1.0-SNAPSHOT</version>
 
 
-    <name>Smava UI Automation</name>
-    <description>Smava UI Automation with BDD Approach using Serenity, Cucumber</description>
+    <name>Web Analytics Automation</name>
+    <description>Web Analytics Automation with BDD Approach using Serenity, Cucumber</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>1.5.10</serenity.version>                       <!-- https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22serenity-core%22 -->
-        <serenity.maven.version>1.5.10</serenity.maven.version>  <!--  https://search.maven.org/#search%7Cga%7C1%7Cserenity%20maven -->
-        <serenity.cucumber.version>1.5.7</serenity.cucumber.version>
+        <serenity.version>1.8.10</serenity.version>                       <!-- https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22serenity-core%22 -->
+        <serenity.maven.version>1.8.10</serenity.maven.version>  <!--  https://search.maven.org/#search%7Cga%7C1%7Cserenity%20maven -->
+        <serenity.cucumber.version>1.6.5</serenity.cucumber.version>
     </properties>
 
     <!-- Define the Bintray repos for convenience -->
@@ -82,6 +82,11 @@
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
             <version>3.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
         </dependency>
     </dependencies>
 
