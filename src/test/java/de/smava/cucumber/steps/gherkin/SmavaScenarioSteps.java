@@ -4,7 +4,6 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-import de.smava.cucumber.pages.SmavaWebAnalyticsUtility;
 import net.thucydides.core.annotations.Steps;
 
 import de.smava.cucumber.steps.serenity.*;
@@ -61,9 +60,25 @@ public class SmavaScenarioSteps {
 
 
     //--------------------------- WHEN -----------------------------------
-//how will i fail
+
     @When("User performs search by entering loan related valid values")
     public void userInputsData(){
+        smavaHomePageCucumberSteps.user_enters_loanSearchInfo();
+        smavaHomePageCucumberSteps.user_performs_vergleichen_action();
+    }
+
+    @When("User enters invalid credentials to login")
+    public void userTriesToLoginWithInvalidInput(){
+        smavaHomePageCucumberSteps.verify_invalid_user_login();
+    }
+
+    @When("User clicks on expand icon against bank entry row")
+    public void userClickOnProductDetailsExpandbutton(){
+        smavaMobilPageCucumberSteps.userClicksProductDetailsExpandButton();
+    }
+
+    @When("User goes through registration route to get offer")
+    public void completeRegistrationRouteAndFetchGTMData(){
         smavaHomePageCucumberSteps.user_enters_loanSearchInfo();
 
         //Kredit
@@ -99,18 +114,6 @@ public class SmavaScenarioSteps {
         //Offer page
         //smavaOfferPageSteps.isOfferPageLoadedSuccessfully();
         //smavaOfferPageSteps.verifyGTMDataForSmavaSmavaOfferPage();
-
-        //smavaHomePageCucumberSteps.user_performs_vergleichen_action();*/
-    }
-
-    @When("User enters invalid credentials to login")
-    public void userTriesToLoginWithInvalidInput(){
-        smavaHomePageCucumberSteps.verify_invalid_user_login();
-    }
-
-    @When("User clicks on expand icon against bank entry row")
-    public void userClickOnProductDetailsExpandbutton(){
-        smavaMobilPageCucumberSteps.userClicksProductDetailsExpandButton();
     }
 
     //--------------------------- THEN -----------------------------------
@@ -160,7 +163,7 @@ public class SmavaScenarioSteps {
         smavaMobilPageCucumberSteps.userClicksProductDetailsExpandButton();
     }
 
-    @Then("User verifies values of GTM")
+    @Then("User verifies values of GTM on each of the pages")
     public void completeGTMSoftAssertionsStep(){
         smavaWebAnalyticsUtilitySteps.finishAssertAllStep();
     }
