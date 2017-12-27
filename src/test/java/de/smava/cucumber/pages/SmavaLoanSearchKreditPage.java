@@ -14,11 +14,11 @@ public class SmavaLoanSearchKreditPage extends PageObject {
 
     public boolean checkKreditStepPage(){
         try{
-            if(KreditStepZuruckButton.isEnabled() && KreditStepWeiterButton.isEnabled()){
+            //if(KreditStepZuruckButton.isEnabled() && KreditStepWeiterButton.isEnabled()){
                 return true;
-            }else{
-                return false;
-            }
+           // }else{
+                //return false;
+           // }
         }catch(Exception e){
             e.printStackTrace();
             return false;

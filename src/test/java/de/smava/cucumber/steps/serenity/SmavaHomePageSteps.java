@@ -11,13 +11,19 @@ public class SmavaHomePageSteps extends ScenarioSteps {
 
     //----------- PageObjects --------------
 
-    SmavaHomePage smavaHomePage;
-    SmavaLoanSearchKreditPage smavaLoanSearchKreditPage;
-    SmavaLoginErrorPage smavaLoginErrorPage;
+    private SmavaHomePage smavaHomePage;
+    private SmavaLoanSearchKreditPage smavaLoanSearchKreditPage;
+    private SmavaLoginErrorPage smavaLoginErrorPage;
+
+    private KreditStepPage kreditStepPage;
+    private PersonStep1Page personStep1Page;
+    private PersonStep2Page personStep2Page;
+    private EinkommenStep1Page einkommenStep1Page;
+    private SmavaWebAnalyticsUtility smavaWebAnalyticsUtility;
 
 
     //------------ Test Data ---------------
-    int loanAmount = 2750;
+    int loanAmount = 500;
     int loanDurationMonths = 24;
     String loanPurpose = "Wohnen";
 
@@ -28,13 +34,13 @@ public class SmavaHomePageSteps extends ScenarioSteps {
     @Step
     public void open_smava_home_page(){
         smavaHomePage.open();
+        getDriver().manage().window().maximize();
     }
 
     @Step
     public void user_enters_loanSearchInfo(){
         assertThat( smavaHomePage.inputNettokreditbetragValue(loanAmount) ).isTrue();
-        assertThat( smavaHomePage.selectLaufzeitValue(loanDurationMonths) ).isTrue();
-        assertThat( smavaHomePage.selectVerwendungValue(loanPurpose) ).isTrue();
+        assertThat( smavaHomePage.clickJetztVergleichenToStartWithKreditStep() ).isTrue();
     }
 
     @Step
@@ -55,5 +61,10 @@ public class SmavaHomePageSteps extends ScenarioSteps {
     @Step
     public void verify_invalid_login_error_page(){
         assertThat( smavaLoginErrorPage.isErrorMessagePresent() ).isTrue();
+    }
+
+    @Step
+    public void verifyGTMDataForSmavaHomePage(){
+        smavaWebAnalyticsUtility.verifyGTMValues("SmavaHomePage");
     }
 }
