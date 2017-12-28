@@ -7,6 +7,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 import de.smava.cucumber.pages.*;
 
+import java.util.List;
+
 public class SmavaEinkommenPage2Steps extends ScenarioSteps {
     private EinkommenStep2Page einkommenStep2Page;
     private SmavaWebAnalyticsUtility smavaWebAnalyticsUtility;
@@ -20,5 +22,12 @@ public class SmavaEinkommenPage2Steps extends ScenarioSteps {
     public void verifyGTMDataForSmavaEinkommenStep2Page(){
         assertThat( einkommenStep2Page.isEinkommenStep2PageLoaded() ).isTrue();
         smavaWebAnalyticsUtility.verifyGTMValues("SmavaEinkommenStep2Page");
+    }
+
+    @Step
+    public void verifyGTMDataForSmavaEinkommenStep2PageWithData(List<List<String>> data){
+        assertThat( einkommenStep2Page.isEinkommenStep2PageLoaded() ).isTrue();
+        smavaWebAnalyticsUtility.verifyGTMValues("SmavaEinkommenStep2Page");
+        smavaWebAnalyticsUtility.verifyGTMTest(data);
     }
 }

@@ -54,6 +54,9 @@ public class SmavaHomePage extends PageObject{
     @FindBy(xpath="//*[@id=\"signonForm\"]/button")
     private WebElement AnmeldenButtonFromLoginDialog;
 
+    @FindBy(xpath="//*[@id=\"content\"]//a[@class='ui orange big button']")
+    private WebElement JetztPramieSichernButton;
+
 
     private String NettokreditbetragInputFieldValueSelectionXpath = "//*[@id=\"myselect\"]/div/div[2]/div[REPLACE_ME]";
     private String NettokreditbetragValuesListXpath = "//*[@id=\"myselect\"]/div/div[2]/div";
@@ -66,6 +69,14 @@ public class SmavaHomePage extends PageObject{
 
 
     private SoftAssertions softAssertions ;
+
+    public boolean isSmavaHomePageLoaded(){
+        if(JetztVergleichenButton.isEnabled() && JetztPramieSichernButton.isEnabled() ){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     public boolean inputNettokreditbetragValue(int value){
         try{

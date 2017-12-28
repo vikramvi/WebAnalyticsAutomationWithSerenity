@@ -1,5 +1,6 @@
 package de.smava.cucumber.steps.gherkin;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -7,6 +8,8 @@ import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 
 import de.smava.cucumber.steps.serenity.*;
+
+import java.util.List;
 
 public class SmavaScenarioSteps {
 
@@ -50,6 +53,72 @@ public class SmavaScenarioSteps {
         smavaHomePageCucumberSteps.open_smava_home_page();
     }
 
+    @Given("User is on Smava Registration Route Kredit Page")
+    public void gotoSmavaKreditStepPage(){
+        smavaHomePageCucumberSteps.open_smava_home_page();
+        smavaHomePageCucumberSteps.user_enters_loanSearchInfo();
+    }
+
+    @Given("User is on Smava Registration Route Person Step1 Page")
+    public void gotoSmavaPersonStep1Page(){
+        smavaHomePageCucumberSteps.open_smava_home_page();
+        smavaHomePageCucumberSteps.user_enters_loanSearchInfo();
+        smavaKreditPageSteps.completeKreditPageSteps();
+    }
+
+    @Given("User is on Smava Registration Route Person Step2 Page")
+    public void gotoSmavaPersonStep2Page(){
+        smavaHomePageCucumberSteps.open_smava_home_page();
+        smavaHomePageCucumberSteps.user_enters_loanSearchInfo();
+        smavaKreditPageSteps.completeKreditPageSteps();
+        smavaPersonPage1Steps.completePersonPage1Steps();
+    }
+
+    @Given("User is on Smava Registration Route Einkommen Step1 Page")
+    public void gotoSmavaEinkommenStep1Page(){
+        smavaHomePageCucumberSteps.open_smava_home_page();
+        smavaHomePageCucumberSteps.user_enters_loanSearchInfo();
+        smavaKreditPageSteps.completeKreditPageSteps();
+        smavaPersonPage1Steps.completePersonPage1Steps();
+        smavaPersonPage2Steps.completePersonPage2Steps();
+    }
+
+    @Given("User is on Smava Registration Route Einkommen Step2 Page")
+    public void gotoSmavaEinkommenStep2Page(){
+        smavaHomePageCucumberSteps.open_smava_home_page();
+        smavaHomePageCucumberSteps.user_enters_loanSearchInfo();
+        smavaKreditPageSteps.completeKreditPageSteps();
+        smavaPersonPage1Steps.completePersonPage1Steps();
+        smavaPersonPage2Steps.completePersonPage2Steps();
+        smavaEinkommenPage1Steps.completeEinkommenPage1Steps();
+    }
+
+    @Given("User is on Smava Registration Route Angebote Vergleichen Page")
+    public void gotoSmavaAngeboteVergleichenPage(){
+        smavaHomePageCucumberSteps.open_smava_home_page();
+        smavaHomePageCucumberSteps.user_enters_loanSearchInfo();
+        smavaKreditPageSteps.completeKreditPageSteps();
+        smavaPersonPage1Steps.completePersonPage1Steps();
+        smavaPersonPage2Steps.completePersonPage2Steps();
+        smavaEinkommenPage1Steps.completeEinkommenPage1Steps();
+        smavaEinkommenPage2Steps.completeEinkommenPage2Steps();
+    }
+
+    @Given("User is on Smava Offer Page")
+    public void gotoSmavaOfferPage(){
+        smavaHomePageCucumberSteps.open_smava_home_page();
+        smavaHomePageCucumberSteps.user_enters_loanSearchInfo();
+        smavaKreditPageSteps.completeKreditPageSteps();
+        smavaPersonPage1Steps.completePersonPage1Steps();
+        smavaPersonPage2Steps.completePersonPage2Steps();
+        smavaEinkommenPage1Steps.completeEinkommenPage1Steps();
+        smavaEinkommenPage2Steps.completeEinkommenPage2Steps();
+        smavaAngeboteVergleichenSteps.completeAngeboteVergleichenSteps();
+        smavaOfferPageSteps.isOfferPageLoadedSuccessfully();
+    }
+
+
+
     @Given("User is on smava mobile integration page")
     public void gotoSmavaMobilIntegrationPage(){
         smavaMobilPageCucumberSteps.open_smava_mobile_integration_page();
@@ -57,6 +126,58 @@ public class SmavaScenarioSteps {
 
 
     //--------------------------- WHEN -----------------------------------
+
+    @When("User checks for GMT with datatable")
+    public void checkSmavaHomePageGMT(DataTable testData){
+        List<List<String>> data = testData.raw();
+        smavaHomePageCucumberSteps.verifyGTMDataForSmavaHomePageWithData(data);
+    }
+
+    @When("User checks Kredit page for GMT with datatable")
+    public void checkSmavaKreditPageGMT(DataTable testData){
+        List<List<String>> data = testData.raw();
+        smavaKreditPageSteps.verifyGTMDataForSmavaKreditPageWithData(data);
+    }
+
+    @When("User checks Person Step1 for GMT with datatable")
+    public void checkSmavaPersonStep1PageGMT(DataTable testData){
+        List<List<String>> data = testData.raw();
+        smavaPersonPage1Steps.verifyGTMDataForSmavaPersonStep1PageWithData(data);
+
+    }
+
+    @When("User checks Person Step2 page for GMT with datatable")
+    public void checkSmavaPersonStep2PageGMT(DataTable testData){
+        List<List<String>> data = testData.raw();
+        smavaPersonPage2Steps.verifyGTMDataForSmavaPersonStep2PageWithData(data);
+    }
+
+    @When("User checks Einkommen Step1 page for GMT with datatable")
+    public void checkSmavaEinkommenStep1PageGMT(DataTable testData){
+        List<List<String>> data = testData.raw();
+        smavaEinkommenPage1Steps.verifyGTMDataForSmavaEinkommenStep1PageWithData(data);
+    }
+
+    @When("User checks Einkommen Step2 page for GMT with datatable")
+    public void checkSmavaEinkommenStep2PageGMT(DataTable testData){
+        List<List<String>> data = testData.raw();
+        smavaEinkommenPage2Steps.verifyGTMDataForSmavaEinkommenStep2PageWithData(data);
+    }
+
+    @When("User checks Angebote Vergleichen page for GMT with datatable")
+    public void checkSmavaAngeboteVergleichenPageGMT(DataTable testData){
+        List<List<String>> data = testData.raw();
+        smavaAngeboteVergleichenSteps.verifyGTMDataForSmavaAngeboteVergleichenPageWithData(data);
+    }
+
+    @When("User checks offer page for GMT with datatable")
+    public void checkSmavaOfferPageGMT(DataTable testData){
+        List<List<String>> data = testData.raw();
+        smavaOfferPageSteps.verifyGTMDataForSmavaOfferPageWithData(data);
+    }
+
+
+
 
     @When("User performs search by entering loan related valid values")
     public void userInputsData(){
@@ -99,7 +220,7 @@ public class SmavaScenarioSteps {
         smavaEinkommenPage1Steps.completeEinkommenPage1Steps();
 
 
-        //EinkommenStep 1
+        //EinkommenStep 2
         smavaEinkommenPage2Steps.verifyGTMDataForSmavaEinkommenStep2Page();
         smavaEinkommenPage2Steps.completeEinkommenPage2Steps();
 
@@ -111,7 +232,7 @@ public class SmavaScenarioSteps {
 
         //Offer page
         smavaOfferPageSteps.isOfferPageLoadedSuccessfully();
-        smavaOfferPageSteps.verifyGTMDataForSmavaSmavaOfferPage();
+        smavaOfferPageSteps.verifyGTMDataForSmavaOfferPage();
     }
 
     //--------------------------- THEN -----------------------------------

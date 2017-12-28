@@ -7,6 +7,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 import de.smava.cucumber.pages.*;
 
+import java.util.List;
+
 public class SmavaHomePageSteps extends ScenarioSteps {
 
     //----------- PageObjects --------------
@@ -35,6 +37,7 @@ public class SmavaHomePageSteps extends ScenarioSteps {
     public void open_smava_home_page(){
         smavaHomePage.open();
         getDriver().manage().window().maximize();
+        assertThat( smavaHomePage.isSmavaHomePageLoaded() ).isTrue();
     }
 
     @Step
@@ -66,5 +69,12 @@ public class SmavaHomePageSteps extends ScenarioSteps {
     @Step
     public void verifyGTMDataForSmavaHomePage(){
         smavaWebAnalyticsUtility.verifyGTMValues("SmavaHomePage");
+    }
+
+    @Step
+    public void verifyGTMDataForSmavaHomePageWithData(List<List<String>> data){
+
+        smavaWebAnalyticsUtility.verifyGTMValues("SmavaHomePage");
+        smavaWebAnalyticsUtility.verifyGTMTest(data);
     }
 }

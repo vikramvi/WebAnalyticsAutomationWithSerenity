@@ -9,6 +9,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 import de.smava.cucumber.pages.KreditStepPage;
 
+import java.util.List;
+
 public class SmavaKreditPageSteps extends ScenarioSteps {
     private KreditStepPage kreditStepPage;
     private SmavaWebAnalyticsUtility smavaWebAnalyticsUtility;
@@ -22,6 +24,12 @@ public class SmavaKreditPageSteps extends ScenarioSteps {
     public void verifyGTMDataForSmavaKreditPage(){
         assertThat( kreditStepPage.isKreditStepPageLoaded() ).isTrue();
         smavaWebAnalyticsUtility.verifyGTMValues("SmavaKreditPage");
+    }
+
+    @Step
+    public void verifyGTMDataForSmavaKreditPageWithData(List<List<String>> data){
+        smavaWebAnalyticsUtility.verifyGTMValues("SmavaKreditPage");
+        smavaWebAnalyticsUtility.verifyGTMTest(data);
     }
 
 }

@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 import org.openqa.selenium.JavascriptExecutor;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -18,9 +19,24 @@ public class SmavaWebAnalyticsUtility extends PageObject {
     Multimap<String, String> multimap;
     private static int oldGMTCount = 0;
     private static int GMTCount = 0;
+    private String localPageName = null;
+
+    public void verifyGTMTest(List<List<String>> data){
+
+        //softAssertions = new SoftAssertions();
+
+        for(int i=0; i < data.size(); i++) {
+
+            softAssertions.assertThat(isValuePresent(multimap, data.get(i).get(0), data.get(i).get(1))).as(localPageName +" " + data.get(i).get(0)).isEqualTo(true);
+        }
+    }
+
+
 
     public void verifyGTMValues(String pageName){
         try{
+
+            localPageName = pageName;
 
             if(softAssertions == null) {
                 //http://joel-costigliola.github.io/assertj/core/api/org/assertj/core/api/SoftAssertions.html
@@ -56,7 +72,7 @@ public class SmavaWebAnalyticsUtility extends PageObject {
             GMTCount = myList.size();
 
             //To ignore GMT ojbects from earlier pages
-            if(pageName.equals("SmavaKreditPage") || pageName.equals("SmavaOfferPage")){
+            if(pageName.equals("SmavaHomePage") || pageName.equals("SmavaKreditPage") || pageName.equals("SmavaOfferPage")){
                 oldGMTCount = 0;
             }
 
@@ -104,7 +120,7 @@ public class SmavaWebAnalyticsUtility extends PageObject {
 
 
 
-            switch(pageName){
+            /*switch(pageName){
                 case "SmavaHomePage":
                                     SmavaHomePageSoftAssertions();
                                     break;
@@ -133,7 +149,7 @@ public class SmavaWebAnalyticsUtility extends PageObject {
                 default:
                        System.out.println("Invalid Page Name");
                        break;
-            }
+            }*/
 
 
             // return true;
