@@ -7,6 +7,8 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 import de.smava.cucumber.pages.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SmavaHomePageSteps extends ScenarioSteps {
@@ -32,6 +34,17 @@ public class SmavaHomePageSteps extends ScenarioSteps {
     String invalidEmail = "smava@invalid.de";
     String invalidPassword = "smava";
 
+
+    private static List<List<String>> HomePageGMTObjects = new ArrayList<List<String>>();
+    static {
+        {
+
+            HomePageGMTObjects.add(Arrays.asList("affiliateChannel", "NA"));
+            HomePageGMTObjects.add(Arrays.asList("channel", "smava intern"));
+            //kreditPageGMTObjects.add(0, ("pageId","CreditSelection") );
+
+        }
+    }
 
     @Step
     public void open_smava_home_page(){
@@ -68,13 +81,14 @@ public class SmavaHomePageSteps extends ScenarioSteps {
 
     @Step
     public void verifyGTMDataForSmavaHomePage(){
-        smavaWebAnalyticsUtility.verifyGTMValues("SmavaHomePage");
+        smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaHomePage");
+        smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(HomePageGMTObjects);
     }
 
     @Step
     public void verifyGTMDataForSmavaHomePageWithData(List<List<String>> data){
 
-        smavaWebAnalyticsUtility.verifyGTMValues("SmavaHomePage");
-        smavaWebAnalyticsUtility.verifyGTMTest(data);
+        smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaHomePage");
+        smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(data);
     }
 }

@@ -7,11 +7,24 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 import de.smava.cucumber.pages.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SmavaEinkommenPage2Steps extends ScenarioSteps {
     private EinkommenStep2Page einkommenStep2Page;
     private SmavaWebAnalyticsUtility smavaWebAnalyticsUtility;
+
+    private static List<List<String>> EinkommenStep2PageGMTObjects = new ArrayList<List<String>>();
+    static {
+        {
+
+            EinkommenStep2PageGMTObjects.add(Arrays.asList("pageId", "IncomeExpenses"));
+            //EinkommenStep1PageGMTObjects.add(Arrays.asList("channel", "smava intern"));
+            //kreditPageGMTObjects.add(0, ("pageId","CreditSelection") );
+
+        }
+    }
 
     @Step
     public void completeEinkommenPage2Steps(){
@@ -21,13 +34,14 @@ public class SmavaEinkommenPage2Steps extends ScenarioSteps {
     @Step
     public void verifyGTMDataForSmavaEinkommenStep2Page(){
         assertThat( einkommenStep2Page.isEinkommenStep2PageLoaded() ).isTrue();
-        smavaWebAnalyticsUtility.verifyGTMValues("SmavaEinkommenStep2Page");
+        smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaEinkommenStep2Page");
+        smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(EinkommenStep2PageGMTObjects);
     }
 
     @Step
     public void verifyGTMDataForSmavaEinkommenStep2PageWithData(List<List<String>> data){
         assertThat( einkommenStep2Page.isEinkommenStep2PageLoaded() ).isTrue();
-        smavaWebAnalyticsUtility.verifyGTMValues("SmavaEinkommenStep2Page");
-        smavaWebAnalyticsUtility.verifyGTMTest(data);
+        smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaEinkommenStep2Page");
+        smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(data);
     }
 }

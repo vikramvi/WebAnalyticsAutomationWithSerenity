@@ -7,11 +7,22 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 import de.smava.cucumber.pages.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SmavaPersonPage1Steps extends ScenarioSteps {
     private PersonStep1Page personStep1Page;
     private SmavaWebAnalyticsUtility smavaWebAnalyticsUtility;
+
+    private static List<List<String>> personStep1PageGMTObjects = new ArrayList<List<String>>();
+    static {
+        {
+
+            personStep1PageGMTObjects.add(Arrays.asList("pageId", "ContactInfo"));
+            //kreditPageGMTObjects.add(Arrays.asList("channel", "smava intern1"));
+        }
+    }
 
     @Step
     public void completePersonPage1Steps(){
@@ -21,13 +32,14 @@ public class SmavaPersonPage1Steps extends ScenarioSteps {
     @Step
     public void verifyGTMDataForSmavaPersonPage1Steps(){
         assertThat( personStep1Page.isPersonStep1PageLoaded() ).isTrue();
-        smavaWebAnalyticsUtility.verifyGTMValues("SmavaPersonStep1Page");
+        smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaPersonStep1Page");
+        smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(personStep1PageGMTObjects);
     }
 
     @Step
     public void verifyGTMDataForSmavaPersonStep1PageWithData(List<List<String>> data){
         assertThat( personStep1Page.isPersonStep1PageLoaded() ).isTrue();
-        smavaWebAnalyticsUtility.verifyGTMValues("SmavaPersonStep1Page");
-        smavaWebAnalyticsUtility.verifyGTMTest(data);
+        smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaPersonStep1Page");
+        smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(data);
     }
 }

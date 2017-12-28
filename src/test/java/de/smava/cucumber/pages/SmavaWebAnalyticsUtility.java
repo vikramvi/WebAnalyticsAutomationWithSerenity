@@ -21,7 +21,7 @@ public class SmavaWebAnalyticsUtility extends PageObject {
     private static int GMTCount = 0;
     private String localPageName = null;
 
-    public void verifyGTMTest(List<List<String>> data){
+    public void verifyGTM_KeyValuePair(List<List<String>> data){
 
         //softAssertions = new SoftAssertions();
 
@@ -32,8 +32,15 @@ public class SmavaWebAnalyticsUtility extends PageObject {
     }
 
 
+    public void verifyGTM_ValueIsNotNull(List<List<String>> data){
+        for(int i=0; i < data.size(); i++) {
 
-    public void verifyGTMValues(String pageName){
+            softAssertions.assertThat(checkForEmptyValue(multimap, data.get(i).get(0))).as(localPageName +" " + data.get(i).get(0)).isEqualTo(true);
+        }
+    }
+
+
+    public void fetchGTMObjectsForGivenPage(String pageName){
         try{
 
             localPageName = pageName;
@@ -159,6 +166,8 @@ public class SmavaWebAnalyticsUtility extends PageObject {
         }
     }
 
+
+
     //Check for key
     public boolean isKeyPresent(Multimap multimap, String key){
         Set keys = multimap.keySet();
@@ -203,7 +212,7 @@ public class SmavaWebAnalyticsUtility extends PageObject {
         }
     }
 
-    public void SmavaHomePageSoftAssertions(){
+    /*public void SmavaHomePageSoftAssertions(){
 
         softAssertions.assertThat(checkForEmptyValue(multimap, "affiliateChannel")).as("HomePage affiliateChannel").isEqualTo(true);
 
@@ -213,35 +222,35 @@ public class SmavaWebAnalyticsUtility extends PageObject {
 
         //softAssertions.assertThat(isValuePresent(multimap, "gtm.uniqueEventId", "5")).as("gtm.uniqueEventId").isEqualTo(true);
 
-    }
+    }*/
 
 
-    public void SmavaKreditStepPageSoftAssertions(){
+    /*public void SmavaKreditStepPageSoftAssertions(){
         softAssertions.assertThat(isValuePresent(multimap, "pageId", "CreditSelection")).as("KreditStepPage pageId").isEqualTo(true);
-    }
+    }*/
 
-    public void SmavaPersonStep1SoftAssertions(){
+    /*public void SmavaPersonStep1SoftAssertions(){
         softAssertions.assertThat(isValuePresent(multimap, "pageId", "ContactInfo")).as("PersonStep1 pageId").isEqualTo(true);
-    }
+    }*/
 
-    public void SmavaPersonStep2SoftAssertions(){
+    /*public void SmavaPersonStep2SoftAssertions(){
         softAssertions.assertThat(isValuePresent(multimap, "pageId", "Address2")).as("PersonStep2 pageId").isEqualTo(true);
 
-    }
+    }*/
 
-    public void SmavaEinkommenStep1SoftAssertions(){
+    /*public void SmavaEinkommenStep1SoftAssertions(){
         softAssertions.assertThat(isValuePresent(multimap, "pageId", "Employment")).as("EinkommenStep1 pageId").isEqualTo(true);
-    }
+    }*/
 
-    public void SmavaEinkommenStep2SoftAssertions(){
+    /*public void SmavaEinkommenStep2SoftAssertions(){
         softAssertions.assertThat(isValuePresent(multimap, "pageId", "IncomeExpenses")).as("EinkommenStep2 pageId").isEqualTo(true);
-    }
+    }*/
 
-    public void SmavaAngeboteVergleichenSoftAssertions(){
+    /*public void SmavaAngeboteVergleichenSoftAssertions(){
         softAssertions.assertThat(isValuePresent(multimap, "pageId", "RdiAccount")).as("AngeboteVergleichen pageId").isEqualTo(true);
-    }
+    }*/
 
-    public void SmavaOfferPageCheckForValidValues_SoftAssertions(){
+    /*public void SmavaOfferPageCheckForValidValues_SoftAssertions(){
         softAssertions.assertThat(isValuePresent(multimap, "pageId", "NextSteps")).as("OfferPage pageId").isEqualTo(true);
         softAssertions.assertThat(isValuePresent(multimap, "requested_amount", "500")).as("OfferPage requested_amount").isEqualTo(true);
 
@@ -253,9 +262,9 @@ public class SmavaWebAnalyticsUtility extends PageObject {
 
         softAssertions.assertThat(isValuePresent(multimap, "marketingPartnerName", "smava GmbH")).as("OfferPage marketingPartnerName").isEqualTo(true);
         softAssertions.assertThat(isValuePresent(multimap, "firstMarketingPartnerName", "smava GmbH")).as("OfferPage firstMarketingPartnerName").isEqualTo(true);
-    }
+    }*/
 
-    public void SmavaOfferPageCheckForEmptyValues_SoftAssertions(){
+    /*public void SmavaOfferPageCheckForEmptyValues_SoftAssertions(){
         softAssertions.assertThat(checkForEmptyValue(multimap, "placementId")).as("OfferPage placementId").isEqualTo(true);
         softAssertions.assertThat(checkForEmptyValue(multimap, "accountId")).as("OfferPage accountId").isEqualTo(true);
 
@@ -264,7 +273,7 @@ public class SmavaWebAnalyticsUtility extends PageObject {
 
         softAssertions.assertThat(checkForEmptyValue(multimap, "leadCycleLastTouchpoint")).as("OfferPage leadCycleLastTouchpoint").isEqualTo(true);
         softAssertions.assertThat(checkForEmptyValue(multimap, "leadCycleState")).as("OfferPage leadCycleState").isEqualTo(true);
-    }
+    }*/
 
 
     public void AssertAll(){
