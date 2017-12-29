@@ -69,7 +69,11 @@ Scenario: User verifies GTM objects on Smava Registration Route Einkommen Step1 
 Scenario: User verifies GTM objects on Smava Registration Route Einkommen Step2 Page
           Given User is on Smava Registration Route Einkommen Step2 Page
           When  User checks Einkommen Step2 page for GTM with datatable
-                |pageId               | IncomeExpenses      |
+                |   event             |   registration_page   |
+                |   flow              |       V1              |
+                |   pageId            |   IncomeExpenses      |
+                |   pageNo            |        5              |
+                |   pageTitle         |      Einkommen        |
           Then  User verifies values of GTM on each of the pages
 
 
