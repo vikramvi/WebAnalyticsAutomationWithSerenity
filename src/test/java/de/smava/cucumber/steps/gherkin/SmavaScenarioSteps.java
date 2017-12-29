@@ -18,8 +18,8 @@ public class SmavaScenarioSteps {
     @Steps
     SmavaHomePageSteps smavaHomePageCucumberSteps;
 
-    @Steps
-    SmavaMobilPageSteps smavaMobilPageCucumberSteps;
+    //@Steps
+    //SmavaMobilPageSteps smavaMobilPageCucumberSteps;
 
     @Steps
     SmavaKreditPageSteps smavaKreditPageSteps;
@@ -119,15 +119,15 @@ public class SmavaScenarioSteps {
 
 
 
-    @Given("User is on smava mobile integration page")
+    /*@Given("User is on smava mobile integration page")
     public void gotoSmavaMobilIntegrationPage(){
         smavaMobilPageCucumberSteps.open_smava_mobile_integration_page();
-    }
+    }*/
 
 
     //--------------------------- WHEN -----------------------------------
 
-    @When("User checks for GMT with datatable")
+    @When("User verifies home page GTM objects key value pair with datatable")
     public void checkSmavaHomePageGMT(DataTable testData){
         List<List<String>> data = testData.raw();
         smavaHomePageCucumberSteps.verifyGTMDataForSmavaHomePageWithData(data);
@@ -170,7 +170,7 @@ public class SmavaScenarioSteps {
         smavaAngeboteVergleichenSteps.verifyGTMDataForSmavaAngeboteVergleichenPageWithData(data);
     }
 
-    @When("User verified offer page GTM objects key value pair from datatable")
+    @When("User verifies offer page GTM objects key value pair from datatable")
     public void checkSmavaOfferPageGTM_KeyValuePair(DataTable testData){
         List<List<String>> data = testData.raw();
         smavaOfferPageSteps.verifyGTMDataForSmavaOfferPageWithData(data);
@@ -197,10 +197,10 @@ public class SmavaScenarioSteps {
         smavaHomePageCucumberSteps.verify_invalid_user_login();
     }
 
-    @When("User clicks on expand icon against bank entry row")
+    /*@When("User clicks on expand icon against bank entry row")
     public void userClickOnProductDetailsExpandbutton(){
         smavaMobilPageCucumberSteps.userClicksProductDetailsExpandButton();
-    }
+    }*/
 
     @When("User goes through registration route to get offer")
     public void completeRegistrationRouteAndFetchGTMData(){
@@ -254,7 +254,7 @@ public class SmavaScenarioSteps {
         smavaHomePageCucumberSteps.verify_invalid_login_error_page();
     }
 
-    @Then("Landing page is fully loaded")
+    /*@Then("Landing page is fully loaded")
     public void verifyIntegrationLandingPage(){
         smavaMobilPageCucumberSteps.is_smava_mobile_integration_page_loaded_completely();
     }
@@ -262,9 +262,9 @@ public class SmavaScenarioSteps {
     @Then("User should see required 5 column names")
     public void verifyBankingTableColumnNames(){
        smavaMobilPageCucumberSteps.isBankingTableColumnsNameDisplayed();
-    }
+    }*/
 
-    @Then("User can see Continue button against each of the bank entries")
+    /*@Then("User can see Continue button against each of the bank entries")
     public void verifyWeiterButtonAgainstEachOfTheBankEntry(){
          smavaMobilPageCucumberSteps.checkForWeiterButton();
     }
@@ -287,7 +287,7 @@ public class SmavaScenarioSteps {
     @Then("User can view product details by clicking on expand icon against bank entry row")
     public void verifyUserCanViewProductDetailsForParticularBank(){
         smavaMobilPageCucumberSteps.userClicksProductDetailsExpandButton();
-    }
+    }*/
 
     @Then("User verifies values of GTM on each of the pages")
     public void completeGTMSoftAssertionsStep(){

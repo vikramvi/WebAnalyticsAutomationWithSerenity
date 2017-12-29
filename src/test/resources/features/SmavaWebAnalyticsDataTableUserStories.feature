@@ -2,9 +2,14 @@ Feature: Smava Home Page User Stories
 
 Scenario: User verifies GTM objects on Smava Home Page
           Given User is on smava home page
-          When  User checks for GMT with datatable
-                |affiliateChannel     | NA      |
-                |channel              | smava intern |
+          When  User verifies home page GTM objects key value pair with datatable
+                |   affiliateChannel   | NA      |
+                |   channel            | smava intern |
+                |   embedded           | 0        |
+                |   event              | smavaWonderland |
+                |   event              | CreditComparisonRoute |
+                |   flow               | Comparison            |
+                |   site_title         | smava Kreditvergleich |
           Then User verifies values of GTM on each of the pages
 
 
@@ -25,7 +30,7 @@ Scenario: User verifies GTM objects on Smava Registration Route Person Step1 Pag
 Scenario: User verifies GTM objects on Smava Registration Route Person Step2 Page
           Given User is on Smava Registration Route Person Step2 Page
           When  User checks Person Step2 page for GMT with datatable
-                |pageId               | Address2      |
+               |pageId               | Address2      |
           Then  User verifies values of GTM on each of the pages
 
 
@@ -52,7 +57,7 @@ Scenario: User verifies GTM objects on Smava Registration Route Angebote Verglei
 
 Scenario: User verifies GTM objects on Smava Offer Page
           Given User is on Smava Offer Page
-          When  User verified offer page GTM objects key value pair from datatable
+          When  User verifies offer page GTM objects key value pair from datatable
                 | pageId                         | NextSteps      |
                 | requested_amount               | 500            |
                 | requested_duration             | 84             |
@@ -68,5 +73,4 @@ Scenario: User verifies GTM objects on Smava Offer Page
                 |   leadCycleLoanApplicationId  |
                 |   leadCycleLastTouchpoint     |
           Then  User verifies values of GTM on each of the pages
-
 
