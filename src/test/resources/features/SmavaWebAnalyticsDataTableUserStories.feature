@@ -80,7 +80,11 @@ Scenario: User verifies GTM objects on Smava Registration Route Einkommen Step2 
 Scenario: User verifies GTM objects on Smava Registration Route Angebote Vergleichen Page
           Given User is on Smava Registration Route Angebote Vergleichen Page
           When  User checks Angebote Vergleichen page for GTM with datatable
-                |pageId               | RdiAccount      |
+                |   event             |   registration_page     |
+                |   flow              |       V1                |
+                |   pageId            |   RdiAccount            |
+                |   pageNo            |        6                |
+                |   pageTitle         |   Angebote vergleichen  |
           Then  User verifies values of GTM on each of the pages
 
 
