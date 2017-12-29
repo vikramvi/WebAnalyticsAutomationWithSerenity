@@ -19,11 +19,11 @@ public class SmavaAngeboteVergleichenSteps extends ScenarioSteps{
     private static List<List<String>> AngeboteVergleichenPageGMTObjects = new ArrayList<List<String>>();
     static {
         {
-
+            AngeboteVergleichenPageGMTObjects.add(Arrays.asList("event", "registration_page"));
+            AngeboteVergleichenPageGMTObjects.add(Arrays.asList("flow", "V1"));
             AngeboteVergleichenPageGMTObjects.add(Arrays.asList("pageId", "RdiAccount"));
-            //AngeboteVergleichenPageGMTObjects.add(Arrays.asList("channel", "smava intern"));
-            //kreditPageGMTObjects.add(0, ("pageId","CreditSelection") );
-
+            AngeboteVergleichenPageGMTObjects.add(Arrays.asList("pageNo", "6"));
+            AngeboteVergleichenPageGMTObjects.add(Arrays.asList("pageTitle", "Angebote vergleichen"));
         }
     }
 

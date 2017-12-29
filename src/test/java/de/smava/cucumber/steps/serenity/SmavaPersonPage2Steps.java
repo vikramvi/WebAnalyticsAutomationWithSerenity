@@ -18,11 +18,12 @@ public class SmavaPersonPage2Steps extends ScenarioSteps {
     private static List<List<String>> personPage2PageGMTObjects = new ArrayList<List<String>>();
     static {
         {
-
+            personPage2PageGMTObjects.add(Arrays.asList("event", "Lead"));
+            personPage2PageGMTObjects.add(Arrays.asList("event", "registration_page"));
+            personPage2PageGMTObjects.add(Arrays.asList("flow", "V1"));
             personPage2PageGMTObjects.add(Arrays.asList("pageId", "Address2"));
-            //kreditPageGMTObjects.add(Arrays.asList("channel", "smava intern1"));
-            //kreditPageGMTObjects.add(0, ("pageId","CreditSelection") );
-
+            personPage2PageGMTObjects.add(Arrays.asList("pageNo", "3"));
+            personPage2PageGMTObjects.add(Arrays.asList("pageTitle", "Person"));
         }
     }
 

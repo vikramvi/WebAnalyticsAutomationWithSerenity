@@ -38,11 +38,13 @@ public class SmavaHomePageSteps extends ScenarioSteps {
     private static List<List<String>> HomePageGMTObjects = new ArrayList<List<String>>();
     static {
         {
-
             HomePageGMTObjects.add(Arrays.asList("affiliateChannel", "NA"));
             HomePageGMTObjects.add(Arrays.asList("channel", "smava intern"));
-            //kreditPageGMTObjects.add(0, ("pageId","CreditSelection") );
-
+            HomePageGMTObjects.add(Arrays.asList("embedded", "0"));
+            HomePageGMTObjects.add(Arrays.asList("event", "smavaWonderland"));
+            HomePageGMTObjects.add(Arrays.asList("event", "CreditComparisonRoute"));
+            HomePageGMTObjects.add(Arrays.asList("flow", "Comparison"));
+            HomePageGMTObjects.add(Arrays.asList("site_title", "smava Kreditvergleich"));
         }
     }
 

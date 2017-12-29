@@ -21,11 +21,13 @@ public class SmavaKreditPageSteps extends ScenarioSteps {
     private static List<List<String>> kreditPageGMTObjects = new ArrayList<List<String>>();
     static {
                 {
-
                     kreditPageGMTObjects.add(Arrays.asList("pageId", "CreditSelection"));
                     kreditPageGMTObjects.add(Arrays.asList("channel", "smava intern"));
-                    //kreditPageGMTObjects.add(0, ("pageId","CreditSelection") );
-
+                    kreditPageGMTObjects.add(Arrays.asList("event", "registration_started"));
+                    kreditPageGMTObjects.add(Arrays.asList("event", "registration_page"));
+                    kreditPageGMTObjects.add(Arrays.asList("flow", "V1"));
+                    kreditPageGMTObjects.add(Arrays.asList("pageNo", "1"));
+                    kreditPageGMTObjects.add(Arrays.asList("pageTitle", "Kredit"));
                 }
     }
 

@@ -18,11 +18,11 @@ public class SmavaEinkommenPage1Steps extends ScenarioSteps {
     private static List<List<String>> EinkommenStep1PageGMTObjects = new ArrayList<List<String>>();
     static {
         {
-
+            EinkommenStep1PageGMTObjects.add(Arrays.asList("event", "registration_page"));
+            EinkommenStep1PageGMTObjects.add(Arrays.asList("flow", "V1"));
             EinkommenStep1PageGMTObjects.add(Arrays.asList("pageId", "Employment"));
-            //EinkommenStep1PageGMTObjects.add(Arrays.asList("channel", "smava intern"));
-            //kreditPageGMTObjects.add(0, ("pageId","CreditSelection") );
-
+            EinkommenStep1PageGMTObjects.add(Arrays.asList("pageNo", "4"));
+            EinkommenStep1PageGMTObjects.add(Arrays.asList("pageTitle", "Einkommen"));
         }
     }
 

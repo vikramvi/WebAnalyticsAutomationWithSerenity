@@ -215,8 +215,6 @@ public class SmavaScenarioSteps {
         smavaPersonPage1Steps.verifyGTMDataForSmavaPersonPage1Steps();
         smavaPersonPage1Steps.completePersonPage1Steps();
 
-
-
         //PersonStep 2
         smavaPersonPage2Steps.verifyGTMDataForSmavaPersonStep2Page();
         smavaPersonPage2Steps.completePersonPage2Steps();
