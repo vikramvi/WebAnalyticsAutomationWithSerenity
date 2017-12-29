@@ -32,7 +32,14 @@ Scenario: User verifies GTM objects on Smava Registration Route Kredit Page
 Scenario: User verifies GTM objects on Smava Registration Route Person Step1 Page
           Given User is on Smava Registration Route Person Step1 Page
           When  User checks Person Step1 for GTM with datatable
-                |pageId               | ContactInfo      |
+                |   pageId            |     ContactInfo       |
+                |   event             |   registration_page   |
+                |   flow              |       V1              |
+                |   pageNo            |        2          |
+                |   pageTitle         |      Person       |
+                | requested_amount    |      500          |
+                | requested_duration  |      84           |
+                | requested_category  |      888          |
           Then User verifies values of GTM on each of the pages
 
 
