@@ -133,38 +133,38 @@ public class SmavaScenarioSteps {
         smavaHomePageCucumberSteps.verifyGTMDataForSmavaHomePageWithData(data);
     }
 
-    @When("User checks Kredit page for GMT with datatable")
+    @When("User checks Kredit page for GTM with datatable")
     public void checkSmavaKreditPageGMT(DataTable testData){
         List<List<String>> data = testData.raw();
         smavaKreditPageSteps.verifyGTMDataForSmavaKreditPageWithData(data);
     }
 
-    @When("User checks Person Step1 for GMT with datatable")
+    @When("User checks Person Step1 for GTM with datatable")
     public void checkSmavaPersonStep1PageGMT(DataTable testData){
         List<List<String>> data = testData.raw();
         smavaPersonPage1Steps.verifyGTMDataForSmavaPersonStep1PageWithData(data);
 
     }
 
-    @When("User checks Person Step2 page for GMT with datatable")
+    @When("User checks Person Step2 page for GTM with datatable")
     public void checkSmavaPersonStep2PageGMT(DataTable testData){
         List<List<String>> data = testData.raw();
         smavaPersonPage2Steps.verifyGTMDataForSmavaPersonStep2PageWithData(data);
     }
 
-    @When("User checks Einkommen Step1 page for GMT with datatable")
+    @When("User checks Einkommen Step1 page for GTM with datatable")
     public void checkSmavaEinkommenStep1PageGMT(DataTable testData){
         List<List<String>> data = testData.raw();
         smavaEinkommenPage1Steps.verifyGTMDataForSmavaEinkommenStep1PageWithData(data);
     }
 
-    @When("User checks Einkommen Step2 page for GMT with datatable")
+    @When("User checks Einkommen Step2 page for GTM with datatable")
     public void checkSmavaEinkommenStep2PageGMT(DataTable testData){
         List<List<String>> data = testData.raw();
         smavaEinkommenPage2Steps.verifyGTMDataForSmavaEinkommenStep2PageWithData(data);
     }
 
-    @When("User checks Angebote Vergleichen page for GMT with datatable")
+    @When("User checks Angebote Vergleichen page for GTM with datatable")
     public void checkSmavaAngeboteVergleichenPageGMT(DataTable testData){
         List<List<String>> data = testData.raw();
         smavaAngeboteVergleichenSteps.verifyGTMDataForSmavaAngeboteVergleichenPageWithData(data);

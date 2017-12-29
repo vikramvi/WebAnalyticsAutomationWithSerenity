@@ -1,4 +1,8 @@
-Feature: Smava Home Page User Stories
+Feature: Smava Web Analaytics User Stories
+         As marketing team spends loads of money on advertisement
+         They would like to track users' actions post marketing campaign
+         Developer, QA and Analytics team should religiously maintain Web Analytics
+
 
 Scenario: User verifies GTM objects on Smava Home Page
           Given User is on smava home page
@@ -15,42 +19,47 @@ Scenario: User verifies GTM objects on Smava Home Page
 
 Scenario: User verifies GTM objects on Smava Registration Route Kredit Page
           Given User is on Smava Registration Route Kredit Page
-          When  User checks Kredit page for GMT with datatable
-                |pageId               | CreditSelection      |
+          When  User checks Kredit page for GTM with datatable
+                |   pageId      |   CreditSelection       |
+                |   event       |   registration_started  |
+                |   event       |   registration_page     |
+                |   flow        |       V1                |
+                |   pageNo      |        1                |
+                |   pageTitle   |       Kredit            |
           Then User verifies values of GTM on each of the pages
 
 
 Scenario: User verifies GTM objects on Smava Registration Route Person Step1 Page
           Given User is on Smava Registration Route Person Step1 Page
-          When  User checks Person Step1 for GMT with datatable
+          When  User checks Person Step1 for GTM with datatable
                 |pageId               | ContactInfo      |
           Then User verifies values of GTM on each of the pages
 
 
 Scenario: User verifies GTM objects on Smava Registration Route Person Step2 Page
           Given User is on Smava Registration Route Person Step2 Page
-          When  User checks Person Step2 page for GMT with datatable
+          When  User checks Person Step2 page for GTM with datatable
                |pageId               | Address2      |
           Then  User verifies values of GTM on each of the pages
 
 
 Scenario: User verifies GTM objects on Smava Registration Route Einkommen Step1 Page
           Given User is on Smava Registration Route Einkommen Step1 Page
-          When  User checks Einkommen Step1 page for GMT with datatable
+          When  User checks Einkommen Step1 page for GTM with datatable
                 |pageId               | Employment      |
           Then  User verifies values of GTM on each of the pages
 
 
 Scenario: User verifies GTM objects on Smava Registration Route Einkommen Step2 Page
           Given User is on Smava Registration Route Einkommen Step2 Page
-          When  User checks Einkommen Step2 page for GMT with datatable
+          When  User checks Einkommen Step2 page for GTM with datatable
                 |pageId               | IncomeExpenses      |
           Then  User verifies values of GTM on each of the pages
 
 
 Scenario: User verifies GTM objects on Smava Registration Route Angebote Vergleichen Page
           Given User is on Smava Registration Route Angebote Vergleichen Page
-          When  User checks Angebote Vergleichen page for GMT with datatable
+          When  User checks Angebote Vergleichen page for GTM with datatable
                 |pageId               | RdiAccount      |
           Then  User verifies values of GTM on each of the pages
 
