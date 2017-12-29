@@ -69,4 +69,10 @@ public class SmavaOfferPageSteps extends ScenarioSteps {
         smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaOfferPage");
         smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(data);
     }
+
+    @Step
+    public void verifyGTMDataForSmavaOfferPage_AgainstNonEmptyValues(List<List<String>> data){
+        smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaOfferPage");
+        smavaWebAnalyticsUtility.verifyGTM_ValueIsNotNull(data);
+    }
 }

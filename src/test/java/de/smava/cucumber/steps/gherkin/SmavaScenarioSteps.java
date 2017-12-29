@@ -170,11 +170,18 @@ public class SmavaScenarioSteps {
         smavaAngeboteVergleichenSteps.verifyGTMDataForSmavaAngeboteVergleichenPageWithData(data);
     }
 
-    @When("User checks offer page for GMT with datatable")
-    public void checkSmavaOfferPageGMT(DataTable testData){
+    @When("User verified offer page GTM objects key value pair from datatable")
+    public void checkSmavaOfferPageGTM_KeyValuePair(DataTable testData){
         List<List<String>> data = testData.raw();
         smavaOfferPageSteps.verifyGTMDataForSmavaOfferPageWithData(data);
     }
+
+    @When("User checks offer page for non empty GTM objects from datatable")
+    public void checkSmavaOfferPageGTM_NonEmptyValuesAgainstKey(DataTable testData){
+        List<List<String>> data = testData.raw();
+        smavaOfferPageSteps.verifyGTMDataForSmavaOfferPage_AgainstNonEmptyValues(data);
+    }
+
 
 
 
