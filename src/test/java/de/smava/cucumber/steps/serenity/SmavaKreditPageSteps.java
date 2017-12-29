@@ -41,13 +41,13 @@ public class SmavaKreditPageSteps extends ScenarioSteps {
     @Step
     public void verifyGTMDataForSmavaKreditPage(){
         assertThat( kreditStepPage.isKreditStepPageLoaded() ).isTrue();
-        smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaKreditPage");
+        assertThat( smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaKreditPage") ).isTrue();
         smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(kreditPageGMTObjects);
     }
 
     @Step
     public void verifyGTMDataForSmavaKreditPageWithData(List<List<String>> data){
-        smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaKreditPage");
+        assertThat( smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaKreditPage") ).isTrue();
         smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(data);
     }
 

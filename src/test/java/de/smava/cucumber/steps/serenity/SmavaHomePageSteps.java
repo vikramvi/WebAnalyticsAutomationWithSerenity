@@ -83,14 +83,13 @@ public class SmavaHomePageSteps extends ScenarioSteps {
 
     @Step
     public void verifyGTMDataForSmavaHomePage(){
-        smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaHomePage");
+        assertThat( smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaHomePage") ).isTrue();
         smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(HomePageGMTObjects);
     }
 
     @Step
     public void verifyGTMDataForSmavaHomePageWithData(List<List<String>> data){
-
-        smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaHomePage");
+        assertThat( smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaHomePage") ).isTrue();
         smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(data);
     }
 }

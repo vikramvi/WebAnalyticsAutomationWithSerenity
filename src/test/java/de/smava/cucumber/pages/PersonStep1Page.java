@@ -35,6 +35,13 @@ public class PersonStep1Page extends PageObject {
     WebElement WeiterButton;
 
 
+    public static final String vorname = "darth";
+    public static final String nachname = "vader";
+    public static final String geburtsdatum = "02.02.1972";
+    public static final String telefon = "015215215263";
+    public static final String emailPrefix = "darth.vader.smava";
+
+
     public void fillPersonStep1PageInfoAndGotoNextPage(){
         clickHerrButton();
         enterVorname();
@@ -52,20 +59,20 @@ public class PersonStep1Page extends PageObject {
     }
 
     public void enterVorname(){
-        VornameInputField.sendKeys("darth");
+        VornameInputField.sendKeys(vorname);
     }
 
 
     public void enterNachname(){
-        NachnameInputField.sendKeys("vader");
+        NachnameInputField.sendKeys(nachname);
     }
 
     public void enterGeburtsdatum(){
-        GeburtsdatumInputField.sendKeys("02.02.1972");
+        GeburtsdatumInputField.sendKeys(geburtsdatum);
     }
 
     public void enterTelefon(){
-        TelefonInputField.sendKeys("015215215263");
+        TelefonInputField.sendKeys(telefon);
     }
 
     public void enterEmail(){
@@ -73,7 +80,7 @@ public class PersonStep1Page extends PageObject {
         Date date = new Date();
         System.out.println(dateFormat.format(date));
 
-        EmailInputField.sendKeys("darth.vader.smava" + dateFormat.format(date) + "@gmail.com");
+        EmailInputField.sendKeys(emailPrefix + dateFormat.format(date) + "@gmail.com");
     }
 
     public void clickSchufaCheckBox(){

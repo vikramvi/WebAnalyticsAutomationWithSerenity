@@ -34,14 +34,14 @@ public class SmavaEinkommenPage2Steps extends ScenarioSteps {
     @Step
     public void verifyGTMDataForSmavaEinkommenStep2Page(){
         assertThat( einkommenStep2Page.isEinkommenStep2PageLoaded() ).isTrue();
-        smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaEinkommenStep2Page");
+        assertThat( smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaEinkommenStep2Page") ).isTrue();
         smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(EinkommenStep2PageGMTObjects);
     }
 
     @Step
     public void verifyGTMDataForSmavaEinkommenStep2PageWithData(List<List<String>> data){
         assertThat( einkommenStep2Page.isEinkommenStep2PageLoaded() ).isTrue();
-        smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaEinkommenStep2Page");
+        assertThat( smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaEinkommenStep2Page") ).isTrue();
         smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(data);
     }
 }

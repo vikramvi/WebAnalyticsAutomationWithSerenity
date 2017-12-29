@@ -35,14 +35,14 @@ public class SmavaPersonPage2Steps extends ScenarioSteps {
     @Step
     public void verifyGTMDataForSmavaPersonStep2Page(){
         assertThat( personStep2Page.isPersonStep2PageLoaded() ).isTrue();
-        smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaPersonStep2Page");
+        assertThat( smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaPersonStep2Page") ).isTrue();
         smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(personPage2PageGMTObjects);
     }
 
     @Step
     public void verifyGTMDataForSmavaPersonStep2PageWithData(List<List<String>> data){
         assertThat( personStep2Page.isPersonStep2PageLoaded() ).isTrue();
-        smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaPersonStep2Page");
+        assertThat( smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaPersonStep2Page") ).isTrue();
         smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(data);
     }
 }

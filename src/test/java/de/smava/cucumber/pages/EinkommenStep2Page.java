@@ -28,6 +28,8 @@ public class EinkommenStep2Page extends PageObject {
     WebElement WeiterButton;
 
 
+    public static final String MonatlichesNettoeinkommen = "4000";
+
 
     public void fillEinkommenStep2PageInfoAndGotoNextPage(){
         inputMonatlichesNettoeinkommen();
@@ -42,7 +44,7 @@ public class EinkommenStep2Page extends PageObject {
     }
 
     public void inputMonatlichesNettoeinkommen(){
-        MonatlichesNettoeinkommenInputField.sendKeys("4000");
+        MonatlichesNettoeinkommenInputField.sendKeys(MonatlichesNettoeinkommen);
     }
 
     public void clickEinkommenKonstantJaButton(){

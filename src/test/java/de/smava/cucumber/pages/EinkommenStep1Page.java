@@ -44,6 +44,15 @@ public class EinkommenStep1Page extends PageObject {
     WebElement WeiterButton;
 
 
+    public static final String MonatlicheWarmmiete = "250";
+    public static final String BeginnDesArbeitsverhältnisses = "01.2000";
+    public static final String NameDesArbeitgebers = "Tesla";
+    public static final String postleitzahl = "13355";
+    public static final String OrtDesArbeitgebers = "Berlin";
+    public static final String STRASSE = "Badstrasse";
+    public static final String HausnummerDesArbeitgebers = "11";
+
+
     public void fillEinkommenStep1PageInfoAndGotoNextPage(){
         inputMonatlicheWarmmiete();
         selectBeschaftigungsverhaltnis();
@@ -61,11 +70,11 @@ public class EinkommenStep1Page extends PageObject {
 
 
     public void inputMonatlicheWarmmiete(){
-        MonatlicheWarmmieteInputField.sendKeys("250");
+        MonatlicheWarmmieteInputField.sendKeys(MonatlicheWarmmiete);
     }
 
     public void BeginnDesArbeitsverhaltnissesInputField(){
-        BeginndesArbeitsverhaltnissesInputField.sendKeys("01.2000");
+        BeginndesArbeitsverhaltnissesInputField.sendKeys(BeginnDesArbeitsverhältnisses);
     }
 
     public void clickUnbefristet(){
@@ -73,23 +82,23 @@ public class EinkommenStep1Page extends PageObject {
     }
 
     public void inputNameDesArbeitgebers(){
-        NameDesArbeitgebersInputField.sendKeys("Tesla");
+        NameDesArbeitgebersInputField.sendKeys(NameDesArbeitgebers );
     }
 
     public void inputArbeitgebersPLZ(){
-        ArbeitgebersPLZInputField.sendKeys("13355");
+        ArbeitgebersPLZInputField.sendKeys(postleitzahl);
     }
 
     public void inputArbeitgebersOrt(){
-        ArbeitgebersOrtInputField.sendKeys("Berlin");
+        ArbeitgebersOrtInputField.sendKeys(OrtDesArbeitgebers);
     }
 
     public void inputArbeitgebersStrasse(){
-        ArbeitgebersStrasseInputField.sendKeys("Badstrasse");
+        ArbeitgebersStrasseInputField.sendKeys(STRASSE);
     }
 
     public void inputArbeitgebersNr(){
-        ArbeitgebersHausnummberInputField.sendKeys("11");
+        ArbeitgebersHausnummberInputField.sendKeys(HausnummerDesArbeitgebers );
     }
 
 

@@ -31,6 +31,12 @@ public class PersonStep2Page extends PageObject {
     WebElement WeiterButton;
 
 
+    public static final String Geburtsort = "Berlin";
+    public static final String Postleitzahl = "13355";
+    public static final String Wohnort = "Berlin";
+    public static final String STRASSE = "BadStrasse";
+    public static final String Hausnummer = "11";
+    public static final String DortWohnhaftSeit = "01.2000";
 
     public void fillPersonStep2PageInfoAndGotoNextPage(){
         inputGeburtsort();
@@ -46,7 +52,7 @@ public class PersonStep2Page extends PageObject {
 
 
     public void inputGeburtsort(){
-        GeburtsortInputField.sendKeys("Berlin");
+        GeburtsortInputField.sendKeys(Geburtsort);
     }
 
     public void clickLedigButton(){
@@ -54,23 +60,23 @@ public class PersonStep2Page extends PageObject {
     }
 
     public void inputPLZ(){
-        PLZInputField.sendKeys("13355");
+        PLZInputField.sendKeys(Postleitzahl);
     }
 
     public void inputInrWohnort(){
-        IhrWohnortInputField.sendKeys("Berlin");
+        IhrWohnortInputField.sendKeys(Wohnort);
     }
 
     public void inputIhreStrasse(){
-        IhreStrasseInputField.sendKeys("BadStrasse");
+        IhreStrasseInputField.sendKeys(STRASSE);
     }
 
     public void inputNr(){
-        NrInputField.sendKeys("11");
+        NrInputField.sendKeys(Hausnummer);
     }
 
     public void inputDortWohnhaftSeit(){
-        DortWohnhaftSeitInputField.sendKeys("01.2000");
+        DortWohnhaftSeitInputField.sendKeys(DortWohnhaftSeit );
     }
 
     public void clickWeiterbutton(){

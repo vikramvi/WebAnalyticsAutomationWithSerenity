@@ -22,6 +22,11 @@ public class AngeboteVergleichenPage extends PageObject {
     @FindBy(xpath="//*[@id=\"dac.isUsed-false\"]")
     WebElement SchnellerBekommenNeinDankeButton;
 
+
+    public static final String Kontonummer = "123456";
+    public static final String Bankleitzahl = "10061006";
+
+
     public void fillAngeboteVergleichenPageInfoAndGotoNextPage(){
         clickKontonummerButton();
         inputKontonummer();
@@ -36,11 +41,11 @@ public class AngeboteVergleichenPage extends PageObject {
     }
 
     public void inputKontonummer(){
-        KontonummerInputField.sendKeys("123456");
+        KontonummerInputField.sendKeys(Kontonummer);
     }
 
     public void inputBankleitzahl(){
-        BankleitzahlInputField.sendKeys("10061006");
+        BankleitzahlInputField.sendKeys(Bankleitzahl);
     }
 
     public void clickWeiterbutton(){

@@ -19,7 +19,6 @@ public class SmavaOfferPageSteps extends ScenarioSteps {
     private static List<List<String>> offerPageGMTObjects = new ArrayList<List<String>>();
     static {
                 {
-
                     offerPageGMTObjects.add(Arrays.asList("pageId", "NextSteps"));
                     offerPageGMTObjects.add(Arrays.asList("requested_amount", "500"));
 
@@ -31,8 +30,6 @@ public class SmavaOfferPageSteps extends ScenarioSteps {
 
                     offerPageGMTObjects.add(Arrays.asList("marketingPartnerName", "smava GmbH"));
                     offerPageGMTObjects.add(Arrays.asList("firstMarketingPartnerName", "smava GmbH"));
-                    //kreditPageGMTObjects.add(0, ("pageId","CreditSelection") );
-
                 }
     }
 
@@ -59,20 +56,20 @@ public class SmavaOfferPageSteps extends ScenarioSteps {
 
     @Step
     public void verifyGTMDataForSmavaOfferPage(){
-        smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaOfferPage");
+        assertThat( smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaOfferPage") ).isTrue();
         smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(offerPageGMTObjects);
         smavaWebAnalyticsUtility.verifyGTM_ValueIsNotNull(offerPageGMTObjectsForNullCheck);
     }
 
     @Step
     public void verifyGTMDataForSmavaOfferPageWithData(List<List<String>> data){
-        smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaOfferPage");
+        assertThat( smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaOfferPage") ).isTrue();
         smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(data);
     }
 
     @Step
     public void verifyGTMDataForSmavaOfferPage_AgainstNonEmptyValues(List<List<String>> data){
-        smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaOfferPage");
+        assertThat( smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaOfferPage") ).isTrue();
         smavaWebAnalyticsUtility.verifyGTM_ValueIsNotNull(data);
     }
 }
