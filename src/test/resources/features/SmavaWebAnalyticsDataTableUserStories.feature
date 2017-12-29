@@ -46,7 +46,12 @@ Scenario: User verifies GTM objects on Smava Registration Route Person Step1 Pag
 Scenario: User verifies GTM objects on Smava Registration Route Person Step2 Page
           Given User is on Smava Registration Route Person Step2 Page
           When  User checks Person Step2 page for GTM with datatable
-               |pageId               | Address2      |
+                |   event             |     Lead              |
+                |   event             |   registration_page   |
+                |   flow              |       V1              |
+                |   pageId            |     Address2      |
+                |   pageNo            |        3          |
+                |   pageTitle         |      Person       |
           Then  User verifies values of GTM on each of the pages
 
 
