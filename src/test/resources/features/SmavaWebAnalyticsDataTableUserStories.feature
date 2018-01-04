@@ -14,6 +14,19 @@ Scenario: User verifies GTM objects on Smava Home Page
                 |   event              | CreditComparisonRoute |
                 |   flow               | Comparison            |
                 |   site_title         | smava Kreditvergleich |
+          And   User checks home page for non empty GTM objects from datatable
+                | affiliateChannel       |
+                | affiliateId            |
+                | channel                |
+                | embedded               |
+                | marketingPartnerName   |
+                | startSeoPlacement      |
+                | subAffiliateId         |
+                | placementId            |
+                | tokenId                |
+                | userRole               |
+          And User checks ordering of events getting fired
+                | smavaWonderland | gtm.js |
           Then User verifies values of GTM on each of the pages
 
 
@@ -37,6 +50,8 @@ Scenario: User verifies GTM objects on Smava Registration Route Kredit Page
                 | placementId            |
                 | tokenId                |
                 | userRole               |
+          And User checks ordering of events getting fired
+                | smavaWonderland | gtm.js |
           Then User verifies values of GTM on each of the pages
 
 
@@ -151,5 +166,7 @@ Scenario: User verifies GTM objects on Smava Offer Page
                 |   currentLoanApplicationId    |
                 |   leadCycleLoanApplicationId  |
                 |   leadCycleLastTouchpoint     |
+          And User checks ordering of events getting fired
+                | smavaWonderland | gtm.js |
           Then  User verifies values of GTM on each of the pages
 

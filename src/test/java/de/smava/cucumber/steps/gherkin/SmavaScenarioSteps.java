@@ -228,6 +228,11 @@ public class SmavaScenarioSteps {
     }
 
 
+    @When("User checks ordering of events getting fired")
+    public void checkEventsOrdering(DataTable testData){
+        List<List<String>> data = testData.raw();
+        smavaWebAnalyticsUtilitySteps.checkEventsOrdering(data);
+    }
 
 
 

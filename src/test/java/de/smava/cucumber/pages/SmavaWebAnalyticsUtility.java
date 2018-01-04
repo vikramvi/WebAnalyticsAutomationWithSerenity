@@ -15,7 +15,7 @@ public class SmavaWebAnalyticsUtility extends PageObject {
 
 
     private static SoftAssertions softAssertions = null;
-    Multimap<String, String> multimap;
+    private static Multimap<String, String> multimap;
     private static int oldGMTCount = 0;
     private static int GMTCount = 0;
     private String localPageName = null;
@@ -155,6 +155,45 @@ public class SmavaWebAnalyticsUtility extends PageObject {
         }{
             return  false;
         }
+    }
+
+
+    public void verifyEventsOrdering(List<List<String>> data){
+        for(int i=0; i < data.size(); i++) {
+
+            softAssertions.assertThat(isParticularEventFiredPriorToAnother(multimap, "event", data.get(i).get(0), data.get(i).get(1))).as("event ordering check" + " " + data.get(i).get(0) + "  " + data.get(i).get(1) ).isEqualTo(true);
+        }
+    }
+
+
+    public boolean isParticularEventFiredPriorToAnother(Multimap multimap, String key, String firstEvent, String secondEvent){
+        if( isKeyPresent(multimap, key)) {
+            System.out.println(multimap.get(key).size());
+
+            int firstEventCounter = -1, secondEventCounter = -1;
+
+            for(int cnt=0; cnt < multimap.get(key).size(); cnt++){
+
+                    if(multimap.get(key).toArray()[cnt].equals(firstEvent)){
+                        firstEventCounter = cnt;
+                        continue;
+
+                    }else if(multimap.get(key).toArray()[cnt].equals(secondEvent)){
+                        secondEventCounter = cnt;
+                        continue;
+                    }
+
+            }
+
+            if( ( firstEventCounter != -1 && secondEventCounter != -1) && firstEventCounter < secondEventCounter){
+                return true;
+            }else{
+                return false;
+            }
+
+        }
+
+        return true;
     }
 
     public void AssertAll(){
