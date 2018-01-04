@@ -7,10 +7,10 @@ Feature: Smava Web Analaytics User Stories
 Scenario: User verifies GTM objects on Smava Home Page
           Given User is on smava home page
           When  User verifies home page GTM objects key value pair with datatable
-                |   affiliateChannel   | NA      |
-                |   channel            | smava intern |
-                |   embedded           | 0        |
-                |   event              | smavaWonderland |
+                |   affiliateChannel   |      NA               |
+                |   channel            |    smava intern       |
+                |   embedded           |          0            |
+                |   event              | smavaWonderland       |
                 |   event              | CreditComparisonRoute |
                 |   flow               | Comparison            |
                 |   site_title         | smava Kreditvergleich |
@@ -26,6 +26,17 @@ Scenario: User verifies GTM objects on Smava Registration Route Kredit Page
                 |   flow        |       V1                |
                 |   pageNo      |        1                |
                 |   pageTitle   |       Kredit            |
+          And   User checks Kredit page for non empty GTM objects from datatable
+                | affiliateChannel       |
+                | affiliateId            |
+                | channel                |
+                | embedded               |
+                | marketingPartnerName   |
+                | startSeoPlacement      |
+                | subAffiliateId         |
+                | placementId            |
+                | tokenId                |
+                | userRole               |
           Then User verifies values of GTM on each of the pages
 
 
@@ -40,6 +51,13 @@ Scenario: User verifies GTM objects on Smava Registration Route Person Step1 Pag
                 | requested_amount    |      500          |
                 | requested_duration  |      84           |
                 | requested_category  |      888          |
+          And   User checks Person Step1 page for non empty GTM objects from datatable
+                | affiliateId            |
+                | channel                |
+                | marketingPartnerName   |
+                | subAffiliateId         |
+                | placementId            |
+                | userRole               |
           Then User verifies values of GTM on each of the pages
 
 
@@ -52,6 +70,13 @@ Scenario: User verifies GTM objects on Smava Registration Route Person Step2 Pag
                 |   pageId            |     Address2      |
                 |   pageNo            |        3          |
                 |   pageTitle         |      Person       |
+          And   User checks Person Step2 page for non empty GTM objects from datatable
+                | affiliateId            |
+                | channel                |
+                | marketingPartnerName   |
+                | subAffiliateId         |
+                | placementId            |
+                | userRole               |
           Then  User verifies values of GTM on each of the pages
 
 
@@ -63,6 +88,13 @@ Scenario: User verifies GTM objects on Smava Registration Route Einkommen Step1 
                 |   pageId            |     Employment        |
                 |   pageNo            |        4              |
                 |   pageTitle         |      Einkommen        |
+          And   User checks Einkommen Step1 page for non empty GTM objects from datatable
+                | affiliateId            |
+                | channel                |
+                | marketingPartnerName   |
+                | subAffiliateId         |
+                | placementId            |
+                | userRole               |
           Then  User verifies values of GTM on each of the pages
 
 
@@ -74,6 +106,13 @@ Scenario: User verifies GTM objects on Smava Registration Route Einkommen Step2 
                 |   pageId            |   IncomeExpenses      |
                 |   pageNo            |        5              |
                 |   pageTitle         |      Einkommen        |
+          And   User checks Einkommen Step2 page for non empty GTM objects from datatable
+                | affiliateId            |
+                | channel                |
+                | marketingPartnerName   |
+                | subAffiliateId         |
+                | placementId            |
+                | userRole               |
           Then  User verifies values of GTM on each of the pages
 
 
@@ -85,6 +124,13 @@ Scenario: User verifies GTM objects on Smava Registration Route Angebote Verglei
                 |   pageId            |   RdiAccount            |
                 |   pageNo            |        6                |
                 |   pageTitle         |   Angebote vergleichen  |
+          And   User checks Angebote Vergleichen page for non empty GTM objects from datatable
+                | affiliateId            |
+                | channel                |
+                | marketingPartnerName   |
+                | subAffiliateId         |
+                | placementId            |
+                | userRole               |
           Then  User verifies values of GTM on each of the pages
 
 

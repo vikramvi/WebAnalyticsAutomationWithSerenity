@@ -51,4 +51,11 @@ public class SmavaKreditPageSteps extends ScenarioSteps {
         smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(data);
     }
 
+    @Step
+    public void verifyGTMDataForSmavaKreditPage_AgainstNonEmptyValues(List<List<String>> data){
+        //As fetchGTMObjectsForGivenPage is alredy called, recalling results in failure
+        //assertThat( smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaKreditPage") ).isTrue();
+        smavaWebAnalyticsUtility.verifyGTM_ValueIsNotNull(data);
+    }
+
 }

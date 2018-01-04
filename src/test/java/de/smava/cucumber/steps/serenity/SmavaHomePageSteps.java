@@ -92,4 +92,10 @@ public class SmavaHomePageSteps extends ScenarioSteps {
         assertThat( smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaHomePage") ).isTrue();
         smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(data);
     }
+
+    @Step
+    public void verifyGTMDataForSmavaHomePage_AgainstNonEmptyValues(List<List<String>> data){
+        assertThat( smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaHomePage") ).isTrue();
+        smavaWebAnalyticsUtility.verifyGTM_ValueIsNotNull(data);
+    }
 }

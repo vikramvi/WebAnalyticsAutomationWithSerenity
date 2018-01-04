@@ -176,6 +176,51 @@ public class SmavaScenarioSteps {
         smavaOfferPageSteps.verifyGTMDataForSmavaOfferPageWithData(data);
     }
 
+
+
+    @When("User checks home page for non empty GTM objects from datatable")
+    public void checkSmavaHomePageGTM_NonEmptyValuesAgainstKey(DataTable testData){
+        List<List<String>> data = testData.raw();
+        smavaHomePageCucumberSteps.verifyGTMDataForSmavaHomePage_AgainstNonEmptyValues(data);
+    }
+
+    @When("User checks Kredit page for non empty GTM objects from datatable")
+    public void checkSmavaKreditPageGTM_NonEmptyValuesAgainstKey(DataTable testData){
+        List<List<String>> data = testData.raw();
+        smavaKreditPageSteps.verifyGTMDataForSmavaKreditPage_AgainstNonEmptyValues(data);
+    }
+
+    @When("User checks Person Step1 page for non empty GTM objects from datatable")
+    public void checkSmavaPersonStep1PageGTM_NonEmptyValuesAgainstKey(DataTable testData){
+        List<List<String>> data = testData.raw();
+        smavaPersonPage1Steps.verifyGTMDataForSmavaPersonStep1Page_AgainstNonEmptyValues(data);
+    }
+
+    @When("User checks Person Step2 page for non empty GTM objects from datatable")
+    public void checkSmavaPersonStep2PageGTM_NonEmptyValuesAgainstKey(DataTable testData){
+        List<List<String>> data = testData.raw();
+        smavaPersonPage2Steps.verifyGTMDataForSmavaPersonStep2Page_AgainstNonEmptyValues(data);
+    }
+
+    @When("User checks Einkommen Step1 page for non empty GTM objects from datatable")
+    public void checkSmavaEinkommenStep1PageGTM_NonEmptyValuesAgainstKey(DataTable testData){
+        List<List<String>> data = testData.raw();
+        smavaEinkommenPage1Steps.verifyGTMDataForSmavaEinkommenStep1Page_AgainstNonEmptyValues(data);
+    }
+
+    @When("User checks Einkommen Step2 page for non empty GTM objects from datatable")
+    public void checkSmavaEinkommenStep2PageGTM_NonEmptyValuesAgainstKey(DataTable testData){
+        List<List<String>> data = testData.raw();
+        smavaEinkommenPage2Steps.verifyGTMDataForSmavaEinkommenStep2Page_AgainstNonEmptyValues(data);
+    }
+
+    @When("User checks Angebote Vergleichen page for non empty GTM objects from datatable")
+    public void checkSmavaAngeboteVergleichenPageGTM_NonEmptyValuesAgainstKey(DataTable testData){
+        List<List<String>> data = testData.raw();
+        smavaAngeboteVergleichenSteps.verifyGTMDataForSmavaAngeboteVergleichenPage_AgainstNonEmptyValues(data);
+    }
+
+
     @When("User checks offer page for non empty GTM objects from datatable")
     public void checkSmavaOfferPageGTM_NonEmptyValuesAgainstKey(DataTable testData){
         List<List<String>> data = testData.raw();
