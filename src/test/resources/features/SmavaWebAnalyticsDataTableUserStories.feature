@@ -135,12 +135,17 @@ Scenario: User verifies GTM objects on Smava Registration Route Einkommen Step1 
                 |   pageId            |     Employment        |
                 |   pageNo            |        4              |
                 |   pageTitle         |      Einkommen        |
+                | requested_amount    |      500              |
+                | requested_duration  |      84               |
+                | requested_category  |      888              |
           And   User checks Einkommen Step1 page for non empty GTM objects from datatable
                 | affiliateId            |
                 | channel                |
+                | gtm.uniqueEventId      |
                 | marketingPartnerName   |
                 | subAffiliateId         |
                 | placementId            |
+                | timestamp              |
                 | userRole               |
           Then  User verifies values of GTM on each of the pages
 
@@ -153,12 +158,17 @@ Scenario: User verifies GTM objects on Smava Registration Route Einkommen Step2 
                 |   pageId            |   IncomeExpenses      |
                 |   pageNo            |        5              |
                 |   pageTitle         |      Einkommen        |
+                | requested_amount    |      500              |
+                | requested_duration  |      84               |
+                | requested_category  |      888              |
           And   User checks Einkommen Step2 page for non empty GTM objects from datatable
                 | affiliateId            |
                 | channel                |
+                | gtm.uniqueEventId      |
                 | marketingPartnerName   |
                 | subAffiliateId         |
                 | placementId            |
+                | timestamp              |
                 | userRole               |
           Then  User verifies values of GTM on each of the pages
 
@@ -184,20 +194,37 @@ Scenario: User verifies GTM objects on Smava Registration Route Angebote Verglei
 Scenario: User verifies GTM objects on Smava Offer Page
           Given User is on Smava Offer Page
           When  User verifies offer page GTM objects key value pair from datatable
-                | pageId                         | NextSteps      |
-                | requested_amount               | 500            |
-                | requested_duration             | 84             |
-                | requested_category             | 888            |
-                | event                          | next_steps     |
-                | flow                           | Fred           |
-                | marketingPartnerName           | smava GmbH     |
-                | firstMarketingPartnerName      | smava GmbH     |
+                |   pageId                      |  NextSteps                 |
+                |   requested_amount            |  500                       |
+                |   requested_duration          |  84                        |
+                |   requested_category          |  888                       |
+                |   event                       |  next_steps                |
+                |   event                       |  lead_tracked              |
+                |   event                       |  Final_Lead                |
+                |   flow                        |  Fred                      |
+                |   marketingPartnerName        |  smava GmbH                |
+                |   firstMarketingPartnerName   |  smava GmbH                |
+                |   isLeadExpired               |  false                     |
+                |   pageId                      |  NextSteps                 |
+                |   pageNo                      |      7                     |
+                |   pageTitle                   | smava - Ihr Kreditangebot  |
           And   User checks offer page for non empty GTM objects from datatable
-                |   placementId  |
-                |   accountId    |
+                |   placementId                 |
+                |   firstPlacementId            |
+                |   accountId                   |
+                |   affiliateId                 |
+                |   channel                     |
+                |   firstAffiliateId            |
+                |   gtm.uniqueEventId           |
                 |   currentLoanApplicationId    |
                 |   leadCycleLoanApplicationId  |
                 |   leadCycleLastTouchpoint     |
+                |   leadCycleState              |
+                |   subAffiliateId              |
+                |   firstSubAffiliateId         |
+                |   timestamp                   |
+                |   timestamp_readable          |
+                |   userRole                    |
           And User checks ordering of events getting fired
                 | smavaWonderland | gtm.js |
           Then  User verifies values of GTM on each of the pages
