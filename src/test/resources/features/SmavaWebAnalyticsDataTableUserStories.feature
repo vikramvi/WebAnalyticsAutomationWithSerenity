@@ -181,12 +181,17 @@ Scenario: User verifies GTM objects on Smava Registration Route Angebote Verglei
                 |   pageId            |   RdiAccount            |
                 |   pageNo            |        6                |
                 |   pageTitle         |   Angebote vergleichen  |
+                | requested_amount    |      500                |
+                | requested_duration  |      84                 |
+                | requested_category  |      888                |
           And   User checks Angebote Vergleichen page for non empty GTM objects from datatable
                 | affiliateId            |
                 | channel                |
+                | gtm.uniqueEventId      |
                 | marketingPartnerName   |
                 | subAffiliateId         |
                 | placementId            |
+                | timestamp              |
                 | userRole               |
           Then  User verifies values of GTM on each of the pages
 
