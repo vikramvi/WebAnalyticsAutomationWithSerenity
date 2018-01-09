@@ -67,6 +67,7 @@ public class SmavaScenarioSteps {
         smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
 
         smavaKreditPageSteps.completeKreditPageSteps();
+        smavaPersonPage1Steps.isPersonPage1StepCompletelyLoaded();
 
     }
 
@@ -82,6 +83,7 @@ public class SmavaScenarioSteps {
         smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
 
         smavaPersonPage1Steps.completePersonPage1Steps();
+        smavaPersonPage2Steps.isPersonPage2StepCompletelyLoaded();
     }
 
     @Given("User is on Smava Registration Route Einkommen Step1 Page")
@@ -99,6 +101,7 @@ public class SmavaScenarioSteps {
         smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
 
         smavaPersonPage2Steps.completePersonPage2Steps();
+        smavaEinkommenPage1Steps.isEinkommenPage1StepCompletelyLoaded();
     }
 
     @Given("User is on Smava Registration Route Einkommen Step2 Page")
@@ -119,6 +122,7 @@ public class SmavaScenarioSteps {
         smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
 
         smavaEinkommenPage1Steps.completeEinkommenPage1Steps();
+        smavaEinkommenPage2Steps.isEinkommenPage2StepCompletelyLoaded();
     }
 
     @Given("User is on Smava Registration Route Angebote Vergleichen Page")
@@ -142,6 +146,7 @@ public class SmavaScenarioSteps {
         smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
 
         smavaEinkommenPage2Steps.completeEinkommenPage2Steps();
+        smavaAngeboteVergleichenSteps.isAngeboteVergleichenPageCompletelyLoaded();
     }
 
     @Given("User is on Smava Offer Page")
@@ -175,57 +180,14 @@ public class SmavaScenarioSteps {
 
     //--------------------------- WHEN -----------------------------------
 
-    @When("User verifies home page GTM objects key value pair with datatable")
-    public void checkSmavaHomePageGMT(DataTable testData){
+    @When("User checks (.*) for GTM objects key value pair with datatable")
+    public void checkGTMObjectsKeyValuePair(String pageName, DataTable testData){
         List<List<String>> data = testData.raw();
-        smavaHomePageCucumberSteps.verifyGTMDataForSmavaHomePageWithData(data);
-    }
-
-    @When("User checks Kredit page for GTM with datatable")
-    public void checkSmavaKreditPageGMT(DataTable testData){
-        List<List<String>> data = testData.raw();
-        smavaKreditPageSteps.verifyGTMDataForSmavaKreditPageWithData(data);
-    }
-
-    @When("User checks Person Step1 for GTM with datatable")
-    public void checkSmavaPersonStep1PageGMT(DataTable testData){
-        List<List<String>> data = testData.raw();
-        smavaPersonPage1Steps.verifyGTMDataForSmavaPersonStep1PageWithData(data);
-
-    }
-
-    @When("User checks Person Step2 page for GTM with datatable")
-    public void checkSmavaPersonStep2PageGMT(DataTable testData){
-        List<List<String>> data = testData.raw();
-        smavaPersonPage2Steps.verifyGTMDataForSmavaPersonStep2PageWithData(data);
-    }
-
-    @When("User checks Einkommen Step1 page for GTM with datatable")
-    public void checkSmavaEinkommenStep1PageGMT(DataTable testData){
-        List<List<String>> data = testData.raw();
-        smavaEinkommenPage1Steps.verifyGTMDataForSmavaEinkommenStep1PageWithData(data);
-    }
-
-    @When("User checks Einkommen Step2 page for GTM with datatable")
-    public void checkSmavaEinkommenStep2PageGMT(DataTable testData){
-        List<List<String>> data = testData.raw();
-        smavaEinkommenPage2Steps.verifyGTMDataForSmavaEinkommenStep2PageWithData(data);
-    }
-
-    @When("User checks Angebote Vergleichen page for GTM with datatable")
-    public void checkSmavaAngeboteVergleichenPageGMT(DataTable testData){
-        List<List<String>> data = testData.raw();
-        smavaAngeboteVergleichenSteps.verifyGTMDataForSmavaAngeboteVergleichenPageWithData(data);
-    }
-
-    @When("User verifies offer page GTM objects key value pair from datatable")
-    public void checkSmavaOfferPageGTM_KeyValuePair(DataTable testData){
-        List<List<String>> data = testData.raw();
-        smavaOfferPageSteps.verifyGTMDataForSmavaOfferPageWithData(data);
+        smavaWebAnalyticsUtilitySteps.verifyGTMDataForParticularSmavaPage_KeyValuePairsFromDataTable(pageName, data);
     }
 
     @When("User checks (.*) event on (.*) for non empty GTM objects from datatable")
-    public void test(String eventName, String pageName, DataTable testData){
+    public void checkGTMObjectsForNullValuesUnderParticularEvent(String eventName, String pageName, DataTable testData){
         List<List<String>> data = testData.raw();
         System.out.println(eventName);
         smavaWebAnalyticsUtilitySteps.verifyGTMDataForParticularSmavaPage_AgainstNonEmptyValues(eventName, pageName, data);

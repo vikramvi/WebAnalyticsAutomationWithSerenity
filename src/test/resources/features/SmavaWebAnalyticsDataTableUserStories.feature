@@ -6,7 +6,7 @@ Feature: Smava Web Analaytics User Stories
 
 Scenario: User verifies GTM objects on Smava Home Page
           Given User is on smava home page
-          When  User verifies home page GTM objects key value pair with datatable
+          When  User checks SmavaHomePage for GTM objects key value pair with datatable
                 |   affiliateChannel   |      NA               |
                 |   channel            |    smava intern       |
                 |   embedded           |          0            |
@@ -31,7 +31,7 @@ Scenario: User verifies GTM objects on Smava Home Page
 
 Scenario: User verifies GTM objects on Smava Registration Route Kredit Page
           Given User is on Smava Registration Route Kredit Page
-          When  User checks Kredit page for GTM with datatable
+          When  User checks SmavaKreditPage for GTM objects key value pair with datatable
                 |   pageId            |   CreditSelection       |
                 |   event             |   registration_started  |
                 |   event             |   registration_page     |
@@ -69,7 +69,7 @@ Scenario: User verifies GTM objects on Smava Registration Route Kredit Page
 
 Scenario: User verifies GTM objects on Smava Registration Route Person Step1 Page
           Given User is on Smava Registration Route Person Step1 Page
-          When  User checks Person Step1 for GTM with datatable
+          When  User checks SmavaPersonStep1Page for GTM objects key value pair with datatable
                 |   pageId            |     ContactInfo       |
                 |   event             |   registration_page   |
                 |   flow              |       V1              |
@@ -100,7 +100,7 @@ Scenario: User verifies GTM objects on Smava Registration Route Person Step1 Pag
 
 Scenario: User verifies GTM objects on Smava Registration Route Person Step2 Page
           Given User is on Smava Registration Route Person Step2 Page
-          When  User checks Person Step2 page for GTM with datatable
+          When  User checks SmavaPersonStep2Page for GTM objects key value pair with datatable
                 |   event             |     account_created     |
                 |   event             |     Lead                |
                 |   event             |   registration_page     |
@@ -155,7 +155,7 @@ Scenario: User verifies GTM objects on Smava Registration Route Person Step2 Pag
 
 Scenario: User verifies GTM objects on Smava Registration Route Einkommen Step1 Page
           Given User is on Smava Registration Route Einkommen Step1 Page
-          When  User checks Einkommen Step1 page for GTM with datatable
+          When  User checks SmavaEinkommenStep1Page for GTM objects key value pair with datatable
                 |   event             |   registration_page   |
                 |   flow              |       V1              |
                 |   pageId            |     Employment        |
@@ -187,7 +187,7 @@ Scenario: User verifies GTM objects on Smava Registration Route Einkommen Step1 
 
 Scenario: User verifies GTM objects on Smava Registration Route Einkommen Step2 Page
           Given User is on Smava Registration Route Einkommen Step2 Page
-          When  User checks Einkommen Step2 page for GTM with datatable
+          When  User checks SmavaEinkommenStep2Page for GTM objects key value pair with datatable
                 |   event             |   registration_page   |
                 |   flow              |       V1              |
                 |   pageId            |   IncomeExpenses      |
@@ -219,7 +219,7 @@ Scenario: User verifies GTM objects on Smava Registration Route Einkommen Step2 
 
 Scenario: User verifies GTM objects on Smava Registration Route Angebote Vergleichen Page
           Given User is on Smava Registration Route Angebote Vergleichen Page
-          When  User checks Angebote Vergleichen page for GTM with datatable
+          When  User checks SmavaAngeboteVergleichenPage for GTM objects key value pair with datatable
                 |   event             |   registration_page     |
                 |   flow              |       V1                |
                 |   pageId            |   RdiAccount            |
@@ -251,7 +251,7 @@ Scenario: User verifies GTM objects on Smava Registration Route Angebote Verglei
 
 Scenario: User verifies GTM objects on Smava Offer Page
           Given User is on Smava Offer Page
-          When  User verifies offer page GTM objects key value pair from datatable
+          When  User checks SmavaOfferPage for GTM objects key value pair with datatable
                 |   pageId                      |  NextSteps                 |
                 |   requested_amount            |  500                       |
                 |   requested_duration          |  84                        |

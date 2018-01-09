@@ -45,13 +45,6 @@ public class SmavaAngeboteVergleichenSteps extends ScenarioSteps{
     }
 
     @Step
-    public void verifyGTMDataForSmavaAngeboteVergleichenPageWithData(List<List<String>> data){
-        assertThat( angeboteVergleichenPage.isAngeboteVergleichenPageLoaded() ).isTrue();
-        assertThat( smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaAngeboteVergleichenPage") ).isTrue();
-        smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(data);
-    }
-
-    @Step
     public void verifyGTMDataForSmavaAngeboteVergleichenPage_AgainstNonEmptyValues(List<List<String>> data){
         //assertThat( smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaAngeboteVergleichenPage") ).isTrue();
         smavaWebAnalyticsUtility.verifyGTM_ValueIsNotNull(data);

@@ -28,6 +28,12 @@ public class SmavaWebAnalyticsUtilitySteps extends ScenarioSteps{
     }
 
     @Step
+    public void verifyGTMDataForParticularSmavaPage_KeyValuePairsFromDataTable(String pageName, List<List<String>> data){
+        assertThat( smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage(pageName) ).isTrue();
+        smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(data);
+    }
+
+    @Step
     public void updateGTMCountForParticularPage(){
         smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage();
     }
