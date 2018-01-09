@@ -18,9 +18,6 @@ public class SmavaScenarioSteps {
     @Steps
     SmavaHomePageSteps smavaHomePageCucumberSteps;
 
-    //@Steps
-    //SmavaMobilPageSteps smavaMobilPageCucumberSteps;
-
     @Steps
     SmavaKreditPageSteps smavaKreditPageSteps;
 
@@ -56,74 +53,125 @@ public class SmavaScenarioSteps {
     @Given("User is on Smava Registration Route Kredit Page")
     public void gotoSmavaKreditStepPage(){
         smavaHomePageCucumberSteps.open_smava_home_page();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaHomePageCucumberSteps.user_enters_loanSearchInfo();
     }
 
     @Given("User is on Smava Registration Route Person Step1 Page")
     public void gotoSmavaPersonStep1Page(){
         smavaHomePageCucumberSteps.open_smava_home_page();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaHomePageCucumberSteps.user_enters_loanSearchInfo();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaKreditPageSteps.completeKreditPageSteps();
+
     }
 
     @Given("User is on Smava Registration Route Person Step2 Page")
     public void gotoSmavaPersonStep2Page(){
         smavaHomePageCucumberSteps.open_smava_home_page();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaHomePageCucumberSteps.user_enters_loanSearchInfo();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaKreditPageSteps.completeKreditPageSteps();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaPersonPage1Steps.completePersonPage1Steps();
     }
 
     @Given("User is on Smava Registration Route Einkommen Step1 Page")
     public void gotoSmavaEinkommenStep1Page(){
         smavaHomePageCucumberSteps.open_smava_home_page();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaHomePageCucumberSteps.user_enters_loanSearchInfo();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaKreditPageSteps.completeKreditPageSteps();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaPersonPage1Steps.completePersonPage1Steps();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaPersonPage2Steps.completePersonPage2Steps();
     }
 
     @Given("User is on Smava Registration Route Einkommen Step2 Page")
     public void gotoSmavaEinkommenStep2Page(){
         smavaHomePageCucumberSteps.open_smava_home_page();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaHomePageCucumberSteps.user_enters_loanSearchInfo();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaKreditPageSteps.completeKreditPageSteps();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaPersonPage1Steps.completePersonPage1Steps();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaPersonPage2Steps.completePersonPage2Steps();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaEinkommenPage1Steps.completeEinkommenPage1Steps();
     }
 
     @Given("User is on Smava Registration Route Angebote Vergleichen Page")
     public void gotoSmavaAngeboteVergleichenPage(){
         smavaHomePageCucumberSteps.open_smava_home_page();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaHomePageCucumberSteps.user_enters_loanSearchInfo();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaKreditPageSteps.completeKreditPageSteps();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaPersonPage1Steps.completePersonPage1Steps();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaPersonPage2Steps.completePersonPage2Steps();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaEinkommenPage1Steps.completeEinkommenPage1Steps();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaEinkommenPage2Steps.completeEinkommenPage2Steps();
     }
 
     @Given("User is on Smava Offer Page")
     public void gotoSmavaOfferPage(){
         smavaHomePageCucumberSteps.open_smava_home_page();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaHomePageCucumberSteps.user_enters_loanSearchInfo();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaKreditPageSteps.completeKreditPageSteps();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaPersonPage1Steps.completePersonPage1Steps();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaPersonPage2Steps.completePersonPage2Steps();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaEinkommenPage1Steps.completeEinkommenPage1Steps();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaEinkommenPage2Steps.completeEinkommenPage2Steps();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
         smavaAngeboteVergleichenSteps.completeAngeboteVergleichenSteps();
+
+
         smavaOfferPageSteps.isOfferPageLoadedSuccessfully();
     }
-
-
-
-    /*@Given("User is on smava mobile integration page")
-    public void gotoSmavaMobilIntegrationPage(){
-        smavaMobilPageCucumberSteps.open_smava_mobile_integration_page();
-    }*/
-
 
     //--------------------------- WHEN -----------------------------------
 
@@ -176,65 +224,18 @@ public class SmavaScenarioSteps {
         smavaOfferPageSteps.verifyGTMDataForSmavaOfferPageWithData(data);
     }
 
-
-
-    @When("User checks home page for non empty GTM objects from datatable")
-    public void checkSmavaHomePageGTM_NonEmptyValuesAgainstKey(DataTable testData){
+    @When("User checks (.*) event on (.*) for non empty GTM objects from datatable")
+    public void test(String eventName, String pageName, DataTable testData){
         List<List<String>> data = testData.raw();
-        smavaHomePageCucumberSteps.verifyGTMDataForSmavaHomePage_AgainstNonEmptyValues(data);
+        System.out.println(eventName);
+        smavaWebAnalyticsUtilitySteps.verifyGTMDataForParticularSmavaPage_AgainstNonEmptyValues(eventName, pageName, data);
     }
-
-    @When("User checks Kredit page for non empty GTM objects from datatable")
-    public void checkSmavaKreditPageGTM_NonEmptyValuesAgainstKey(DataTable testData){
-        List<List<String>> data = testData.raw();
-        smavaKreditPageSteps.verifyGTMDataForSmavaKreditPage_AgainstNonEmptyValues(data);
-    }
-
-    @When("User checks Person Step1 page for non empty GTM objects from datatable")
-    public void checkSmavaPersonStep1PageGTM_NonEmptyValuesAgainstKey(DataTable testData){
-        List<List<String>> data = testData.raw();
-        smavaPersonPage1Steps.verifyGTMDataForSmavaPersonStep1Page_AgainstNonEmptyValues(data);
-    }
-
-    @When("User checks Person Step2 page for non empty GTM objects from datatable")
-    public void checkSmavaPersonStep2PageGTM_NonEmptyValuesAgainstKey(DataTable testData){
-        List<List<String>> data = testData.raw();
-        smavaPersonPage2Steps.verifyGTMDataForSmavaPersonStep2Page_AgainstNonEmptyValues(data);
-    }
-
-    @When("User checks Einkommen Step1 page for non empty GTM objects from datatable")
-    public void checkSmavaEinkommenStep1PageGTM_NonEmptyValuesAgainstKey(DataTable testData){
-        List<List<String>> data = testData.raw();
-        smavaEinkommenPage1Steps.verifyGTMDataForSmavaEinkommenStep1Page_AgainstNonEmptyValues(data);
-    }
-
-    @When("User checks Einkommen Step2 page for non empty GTM objects from datatable")
-    public void checkSmavaEinkommenStep2PageGTM_NonEmptyValuesAgainstKey(DataTable testData){
-        List<List<String>> data = testData.raw();
-        smavaEinkommenPage2Steps.verifyGTMDataForSmavaEinkommenStep2Page_AgainstNonEmptyValues(data);
-    }
-
-    @When("User checks Angebote Vergleichen page for non empty GTM objects from datatable")
-    public void checkSmavaAngeboteVergleichenPageGTM_NonEmptyValuesAgainstKey(DataTable testData){
-        List<List<String>> data = testData.raw();
-        smavaAngeboteVergleichenSteps.verifyGTMDataForSmavaAngeboteVergleichenPage_AgainstNonEmptyValues(data);
-    }
-
-
-    @When("User checks offer page for non empty GTM objects from datatable")
-    public void checkSmavaOfferPageGTM_NonEmptyValuesAgainstKey(DataTable testData){
-        List<List<String>> data = testData.raw();
-        smavaOfferPageSteps.verifyGTMDataForSmavaOfferPage_AgainstNonEmptyValues(data);
-    }
-
 
     @When("User checks ordering of events getting fired")
     public void checkEventsOrdering(DataTable testData){
         List<List<String>> data = testData.raw();
         smavaWebAnalyticsUtilitySteps.checkEventsOrdering(data);
     }
-
-
 
     @When("User performs search by entering loan related valid values")
     public void userInputsData(){
@@ -246,11 +247,6 @@ public class SmavaScenarioSteps {
     public void userTriesToLoginWithInvalidInput(){
         smavaHomePageCucumberSteps.verify_invalid_user_login();
     }
-
-    /*@When("User clicks on expand icon against bank entry row")
-    public void userClickOnProductDetailsExpandbutton(){
-        smavaMobilPageCucumberSteps.userClicksProductDetailsExpandButton();
-    }*/
 
     @When("User goes through registration route to get offer")
     public void completeRegistrationRouteAndFetchGTMData(){
@@ -301,41 +297,6 @@ public class SmavaScenarioSteps {
     public void verifyInvalidLoginErrorPage(){
         smavaHomePageCucumberSteps.verify_invalid_login_error_page();
     }
-
-    /*@Then("Landing page is fully loaded")
-    public void verifyIntegrationLandingPage(){
-        smavaMobilPageCucumberSteps.is_smava_mobile_integration_page_loaded_completely();
-    }
-
-    @Then("User should see required 5 column names")
-    public void verifyBankingTableColumnNames(){
-       smavaMobilPageCucumberSteps.isBankingTableColumnsNameDisplayed();
-    }*/
-
-    /*@Then("User can see Continue button against each of the bank entries")
-    public void verifyWeiterButtonAgainstEachOfTheBankEntry(){
-         smavaMobilPageCucumberSteps.checkForWeiterButton();
-    }
-
-    @Then("User can view all the expected values for Verwendung")
-    public void verifyVerwendungValues(){
-        smavaMobilPageCucumberSteps.checkVerwendung();
-    }
-
-    @Then("User can view all the expected values for Laufzeit")
-    public void verifyLaufzeitValues(){
-        smavaMobilPageCucumberSteps.checkLaufzeit();
-    }
-
-    @Then("User can view all the expected values for Nettokreditbetrag")
-    public void verifyNettokreditbetragValues(){
-        smavaMobilPageCucumberSteps.checkNettokreditbetrag();
-    }
-
-    @Then("User can view product details by clicking on expand icon against bank entry row")
-    public void verifyUserCanViewProductDetailsForParticularBank(){
-        smavaMobilPageCucumberSteps.userClicksProductDetailsExpandButton();
-    }*/
 
     @Then("User verifies values of GTM on each of the pages")
     public void completeGTMSoftAssertionsStep(){

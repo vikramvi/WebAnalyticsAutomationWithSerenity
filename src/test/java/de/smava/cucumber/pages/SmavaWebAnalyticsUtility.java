@@ -1,6 +1,6 @@
 package de.smava.cucumber.pages;
 
-import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Multimap;
 import net.thucydides.core.pages.PageObject;
 import org.assertj.core.api.SoftAssertions;
@@ -13,87 +13,138 @@ import java.util.Set;
 
 public class SmavaWebAnalyticsUtility extends PageObject {
 
-
     private static SoftAssertions softAssertions = null;
-    private static Multimap<String, String> multimap;
-    private static int oldGMTCount = 0;
-    private static int GMTCount = 0;
+    private static Multimap<String, String> multimap, multimapForParticularEvent;
+    private static int GTMObjectsCountForParticularPage = 0, oldGTMCount = 0;
     private String localPageName = null;
+    private String localEventName = null;
+    private static String lastPageName = "RandomLastPage";
 
 
+    //Method to keep track of GTM objects count of each page
+    public void fetchGTMObjectsForGivenPage() {
+        try {
+                JavascriptExecutor js = (JavascriptExecutor) getDriver();
+
+                ArrayList<Map<String, String>> GTMObjectsList = new ArrayList<>();
+
+                GTMObjectsList = (ArrayList) js.executeScript("return window.smavaGoTaMa2016");
+
+                GTMObjectsCountForParticularPage = GTMObjectsList.size();
+
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+    }
+
+    //Method to get GTM objects for particular event on particular page
+    public boolean fetchGTMObjectsForGivenPage(String pageName, String eventName) {
+
+        localEventName = eventName;
+
+        return fetchGTMObjectsForGivenPage(pageName);
+    }
+
+
+    //Method to get GTM objects unique to particular page
     public boolean fetchGTMObjectsForGivenPage(String pageName){
         try{
 
-            localPageName = pageName;
+                localPageName = pageName;
 
-            if(softAssertions == null) {
-                //http://joel-costigliola.github.io/assertj/core/api/org/assertj/core/api/SoftAssertions.html
-                softAssertions = new SoftAssertions();
-            }
-
-            JavascriptExecutor js = (JavascriptExecutor)getDriver();
-
-            ArrayList<Map<String, String>> myList = new ArrayList<>();
-
-            myList =  (ArrayList) js.executeScript("return window.smavaGoTaMa2016");
-
-
-            //HashMap don’t allow duplicate keys
-            //GTM has duplicate keys
-            //HashMap<String, String> actualGMTData = new HashMap<String, String>();
-
-
-            //https://stackoverflow.com/questions/1062960/map-implementation-with-duplicate-keys
-            //Map with duplicate keys
-            //Multimap<String, String> multimap = ArrayListMultimap.create();
-            multimap = ArrayListMultimap.create();
-
-
-            String keyTemp;
-            String valueTemp;
-
-            oldGMTCount = GMTCount;
-            GMTCount = myList.size();
-
-            //To ignore GMT ojbects from earlier pages
-            if(pageName.equals("SmavaHomePage") || pageName.equals("SmavaKreditPage") || pageName.equals("SmavaOfferPage")){
-                oldGMTCount = 0;
-            }
-
-
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  " + pageName +"  GTM Data <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-            System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-
-
-            for(int a=0; a < myList.size(); a++) {
-                try {
-                       if(a >= oldGMTCount) {
-                           System.out.println("-----------------  Key Index = " + a);
-                               for (String key : myList.get(a).keySet()) {
-
-                                   System.out.println(key + "      " + String.valueOf(myList.get(a).get(key)));
-
-                                   multimap.put(key, String.valueOf(myList.get(a).get(key)));
-
-                               }
-                       }
-                }catch (Exception e){
-                    //e.printStackTrace();
-                    continue;
+                if(softAssertions == null) {
+                    //http://joel-costigliola.github.io/assertj/core/api/org/assertj/core/api/SoftAssertions.html
+                    softAssertions = new SoftAssertions();
                 }
-            }
+
+                JavascriptExecutor js = (JavascriptExecutor)getDriver();
+
+                ArrayList<Map<String, String>> GTMObjectsList = new ArrayList<>();
+
+                GTMObjectsList =  (ArrayList) js.executeScript("return window.smavaGoTaMa2016");
 
 
-            //---------------  Verification Step --------------
+                //HashMap don’t allow duplicate keys
+                //GTM has duplicate keys
+                //HashMap<String, String> actualGMTData = new HashMap<String, String>();
 
 
-            //https://stackoverflow.com/questions/3934470/how-to-iterate-through-google-multimap
-            for(Object key : multimap.keySet()){
-                System.out.println( key + "     " + multimap.get(String.valueOf(key)) );
-            }
+                //https://stackoverflow.com/questions/1062960/map-implementation-with-duplicate-keys
+                //Map with duplicate keys
+                //Multimap<String, String> multimap = ArrayListMultimap.create();
+                ////multimap = ArrayListMultimap.create();
+                multimap = LinkedListMultimap.create();
+                multimapForParticularEvent = LinkedListMultimap.create();
 
-            return true;
+
+                String keyTemp;
+                String valueTemp;
+
+                if(!lastPageName.equals(localPageName)) {
+                    //assign last page GTM objects's count, so that only new GTM objects will be checked
+                    oldGTMCount = GTMObjectsCountForParticularPage;
+                }
+
+                //get current page GTM objects' count
+                GTMObjectsCountForParticularPage = GTMObjectsList.size();
+
+                //To ignore GMT ojbects from earlier pages
+                if(pageName.equals("SmavaHomePage") || pageName.equals("SmavaKreditPage") || pageName.equals("SmavaOfferPage")){
+                    oldGTMCount = 0;
+                }
+
+
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  " + pageName +"  GTM Data <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+                System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+
+
+                for(int a=0; a < GTMObjectsList.size(); a++) {
+                    try {
+
+                           //multimap.clear();
+                           multimapForParticularEvent.clear();
+
+                           if(a >= oldGTMCount) {
+                               System.out.println("-----------------  Key Index = " + a);
+                               //multimap.put(Integer.toString(a), Integer.toString( myList.get(a).size() ) );
+                                   for (String key : GTMObjectsList.get(a).keySet()) {
+
+                                       System.out.println(key + "      " + String.valueOf(GTMObjectsList.get(a).get(key)));
+
+                                       multimap.put(key, String.valueOf(GTMObjectsList.get(a).get(key)));
+                                       multimapForParticularEvent.put(key, String.valueOf(GTMObjectsList.get(a).get(key)));
+                                   }
+                           }
+
+
+                           if(localEventName != null) {
+                               if (isValuePresent(multimapForParticularEvent, "event", localEventName)) {
+
+                                   lastPageName = localPageName;
+                                   return true;
+                               }
+                           }
+
+
+                    }catch (Exception e){
+                        //e.printStackTrace();
+                        continue;
+                    }
+                }
+
+
+                //---------------  Verification Step --------------
+
+
+                //https://stackoverflow.com/questions/3934470/how-to-iterate-through-google-multimap
+                for(Object key : multimap.keySet()){
+                    System.out.println( key + "     " + multimap.get(String.valueOf(key)) );
+                }
+
+                lastPageName = localPageName;
+
+                return true;
         }catch (Exception e){
             e.printStackTrace();
             return false;
@@ -110,7 +161,7 @@ public class SmavaWebAnalyticsUtility extends PageObject {
     public void verifyGTM_ValueIsNotNull(List<List<String>> data){
         for(int i=0; i < data.size(); i++) {
 
-            softAssertions.assertThat(checkForEmptyValue(multimap, data.get(i).get(0))).as(localPageName +" " + data.get(i).get(0)).isEqualTo(true);
+            softAssertions.assertThat(checkForEmptyValue(multimapForParticularEvent, data.get(i).get(0))).as(localPageName +" " + data.get(i).get(0)).isEqualTo(true);
         }
     }
 
