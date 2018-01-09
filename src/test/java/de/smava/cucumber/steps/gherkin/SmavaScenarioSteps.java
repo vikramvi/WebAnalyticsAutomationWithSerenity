@@ -248,6 +248,47 @@ public class SmavaScenarioSteps {
         smavaHomePageCucumberSteps.verify_invalid_user_login();
     }
 
+    @When("User verifies GTM Objects key value pair on each of the registration route pages")
+    public void checkGTMObjectKeyValuePair(DataTable testData){
+        List<List<String>> data = testData.raw();
+
+        //BUG flow = comparision
+        smavaWebAnalyticsUtilitySteps.verifyGTMObjectKeyValuePair("SmavaHomePage", data);
+        smavaHomePageCucumberSteps.user_enters_loanSearchInfo();
+
+        smavaKreditPageSteps.isKreditPageCompletelyLoaded();
+        smavaWebAnalyticsUtilitySteps.verifyGTMObjectKeyValuePair("SmavaKreditPage", data);
+        smavaKreditPageSteps.completeKreditPageSteps();
+
+        smavaPersonPage1Steps.isPersonPage1StepCompletelyLoaded();
+        smavaWebAnalyticsUtilitySteps.verifyGTMObjectKeyValuePair("SmavaPersonStep1Page", data);
+        smavaPersonPage1Steps.completePersonPage1Steps();
+
+        smavaPersonPage2Steps.isPersonPage2StepCompletelyLoaded();
+        smavaWebAnalyticsUtilitySteps.verifyGTMObjectKeyValuePair("SmavaPersonStep2Page", data);
+        smavaPersonPage2Steps.completePersonPage2Steps();
+
+        smavaEinkommenPage1Steps.isEinkommenPage1StepCompletelyLoaded();
+        smavaWebAnalyticsUtilitySteps.verifyGTMObjectKeyValuePair("SmavaEinkommenStep1Page", data);
+        smavaEinkommenPage1Steps.completeEinkommenPage1Steps();
+
+
+        smavaEinkommenPage2Steps.isEinkommenPage2StepCompletelyLoaded();
+        smavaWebAnalyticsUtilitySteps.verifyGTMObjectKeyValuePair("SmavaEinkommenStep2Page", data);
+        smavaEinkommenPage2Steps.completeEinkommenPage2Steps();
+
+        smavaAngeboteVergleichenSteps.isAngeboteVergleichenPageCompletelyLoaded();
+        smavaWebAnalyticsUtilitySteps.verifyGTMObjectKeyValuePair("SmavaAngeboteVergleichenPage", data);
+        smavaAngeboteVergleichenSteps.completeAngeboteVergleichenSteps();
+
+        smavaOfferPageSteps.isOfferPageLoadedSuccessfully();
+        //BUG flow = Fred
+        smavaWebAnalyticsUtilitySteps.verifyGTMObjectKeyValuePair("SmavaOfferPage", data);
+
+    }
+
+
+
     @When("User goes through registration route to get offer")
     public void completeRegistrationRouteAndFetchGTMData(){
         smavaHomePageCucumberSteps.verifyGTMDataForSmavaHomePage();

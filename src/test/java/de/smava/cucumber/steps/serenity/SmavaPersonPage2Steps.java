@@ -28,6 +28,11 @@ public class SmavaPersonPage2Steps extends ScenarioSteps {
     }
 
     @Step
+    public void isPersonPage2StepCompletelyLoaded(){
+        assertThat( personStep2Page.isPersonStep2PageLoaded() ).isTrue();
+    }
+
+    @Step
     public void completePersonPage2Steps(){
         personStep2Page.fillPersonStep2PageInfoAndGotoNextPage();
     }

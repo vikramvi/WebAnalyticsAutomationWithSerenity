@@ -32,4 +32,10 @@ public class SmavaWebAnalyticsUtilitySteps extends ScenarioSteps{
         smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage();
     }
 
+    @Step
+    public void verifyGTMObjectKeyValuePair(String pageName, List<List<String>> data){
+        assertThat( smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage(pageName) ).isTrue();
+        smavaWebAnalyticsUtility.verifyGTM_KeyValuePair(data);
+    }
+
 }

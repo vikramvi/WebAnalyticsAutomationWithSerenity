@@ -32,6 +32,10 @@ public class SmavaKreditPageSteps extends ScenarioSteps {
     }
 
 
+    @Step
+    public void isKreditPageCompletelyLoaded(){
+        assertThat( kreditStepPage.isKreditStepPageLoaded() ).isTrue();
+    }
 
     @Step
     public void completeKreditPageSteps(){

@@ -324,3 +324,8 @@ Scenario: User verifies GTM objects on Smava Offer Page
                 | smavaWonderland | gtm.js |
           Then  User verifies values of GTM on each of the pages
 
+Scenario: User checks flow key value on smava registration flow pages
+          Given User is on smava home page
+          When  User verifies GTM Objects key value pair on each of the registration route pages
+                |   flow              |         V1              |
+          Then  User verifies values of GTM on each of the pages

@@ -28,6 +28,11 @@ public class SmavaAngeboteVergleichenSteps extends ScenarioSteps{
     }
 
     @Step
+    public void isAngeboteVergleichenPageCompletelyLoaded(){
+        assertThat( angeboteVergleichenPage.isAngeboteVergleichenPageLoaded()).isTrue();
+    }
+
+    @Step
     public void completeAngeboteVergleichenSteps(){
         angeboteVergleichenPage.fillAngeboteVergleichenPageInfoAndGotoNextPage();
     }

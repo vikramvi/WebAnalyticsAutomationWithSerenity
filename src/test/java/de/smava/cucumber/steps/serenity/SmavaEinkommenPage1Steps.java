@@ -27,6 +27,11 @@ public class SmavaEinkommenPage1Steps extends ScenarioSteps {
     }
 
     @Step
+    public void isEinkommenPage1StepCompletelyLoaded(){
+        assertThat( einkommenStep1Page.isEinkommenStep1PageLoaded() ).isTrue();
+    }
+
+    @Step
     public void completeEinkommenPage1Steps(){
         einkommenStep1Page.fillEinkommenStep1PageInfoAndGotoNextPage();
     }
