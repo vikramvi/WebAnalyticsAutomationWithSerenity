@@ -47,11 +47,15 @@ public class SmavaScenarioSteps {
 
     @Given("User is on smava home page")
     public void gotoSmavaHomePage(){
+        smavaWebAnalyticsUtilitySteps.createSoftAssertionObject();
+
         smavaHomePageCucumberSteps.open_smava_home_page();
     }
 
     @Given("User is on Smava Registration Route Kredit Page")
     public void gotoSmavaKreditStepPage(){
+        smavaWebAnalyticsUtilitySteps.createSoftAssertionObject();
+
         smavaHomePageCucumberSteps.open_smava_home_page();
         smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
 
@@ -60,6 +64,8 @@ public class SmavaScenarioSteps {
 
     @Given("User is on Smava Registration Route Person Step1 Page")
     public void gotoSmavaPersonStep1Page(){
+        smavaWebAnalyticsUtilitySteps.createSoftAssertionObject();
+
         smavaHomePageCucumberSteps.open_smava_home_page();
         smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
 
@@ -73,6 +79,8 @@ public class SmavaScenarioSteps {
 
     @Given("User is on Smava Registration Route Person Step2 Page")
     public void gotoSmavaPersonStep2Page(){
+        smavaWebAnalyticsUtilitySteps.createSoftAssertionObject();
+
         smavaHomePageCucumberSteps.open_smava_home_page();
         smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
 
@@ -88,6 +96,8 @@ public class SmavaScenarioSteps {
 
     @Given("User is on Smava Registration Route Einkommen Step1 Page")
     public void gotoSmavaEinkommenStep1Page(){
+        smavaWebAnalyticsUtilitySteps.createSoftAssertionObject();
+
         smavaHomePageCucumberSteps.open_smava_home_page();
         smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
 
@@ -106,6 +116,8 @@ public class SmavaScenarioSteps {
 
     @Given("User is on Smava Registration Route Einkommen Step2 Page")
     public void gotoSmavaEinkommenStep2Page(){
+        smavaWebAnalyticsUtilitySteps.createSoftAssertionObject();
+
         smavaHomePageCucumberSteps.open_smava_home_page();
         smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
 
@@ -127,6 +139,8 @@ public class SmavaScenarioSteps {
 
     @Given("User is on Smava Registration Route Angebote Vergleichen Page")
     public void gotoSmavaAngeboteVergleichenPage(){
+        smavaWebAnalyticsUtilitySteps.createSoftAssertionObject();
+
         smavaHomePageCucumberSteps.open_smava_home_page();
         smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
 
@@ -151,6 +165,8 @@ public class SmavaScenarioSteps {
 
     @Given("User is on Smava Offer Page")
     public void gotoSmavaOfferPage(){
+        smavaWebAnalyticsUtilitySteps.createSoftAssertionObject();
+
         smavaHomePageCucumberSteps.open_smava_home_page();
         smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
 

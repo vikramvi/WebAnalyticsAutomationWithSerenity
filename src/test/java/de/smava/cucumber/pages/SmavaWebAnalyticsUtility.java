@@ -21,6 +21,12 @@ public class SmavaWebAnalyticsUtility extends PageObject {
     private static String lastPageName = "RandomLastPage";
 
 
+    public void createSoftAssertionObject(){
+        //https://automationrhapsody.com/soft-assertions-not-fail-junit-test/
+        //http://joel-costigliola.github.io/assertj/core/api/org/assertj/core/api/SoftAssertions.html
+        softAssertions = new SoftAssertions();
+    }
+
     //Method to keep track of GTM objects count of each page
     public void fetchGTMObjectsForGivenPage() {
         try {
@@ -49,13 +55,7 @@ public class SmavaWebAnalyticsUtility extends PageObject {
     //Method to get GTM objects unique to particular page
     public boolean fetchGTMObjectsForGivenPage(String pageName){
         try{
-
                 localPageName = pageName;
-
-                if(softAssertions == null) {
-                    //http://joel-costigliola.github.io/assertj/core/api/org/assertj/core/api/SoftAssertions.html
-                    softAssertions = new SoftAssertions();
-                }
 
                 JavascriptExecutor js = (JavascriptExecutor)getDriver();
 
@@ -250,6 +250,5 @@ public class SmavaWebAnalyticsUtility extends PageObject {
     public void AssertAll(){
         softAssertions.assertAll();
     }
-
 
 }

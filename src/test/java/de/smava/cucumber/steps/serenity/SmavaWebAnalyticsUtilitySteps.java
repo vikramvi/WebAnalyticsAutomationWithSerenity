@@ -12,6 +12,11 @@ public class SmavaWebAnalyticsUtilitySteps extends ScenarioSteps{
     private SmavaWebAnalyticsUtility smavaWebAnalyticsUtility;
 
     @Step
+    public void createSoftAssertionObject(){
+        smavaWebAnalyticsUtility.createSoftAssertionObject();
+    }
+
+    @Step
     public void finishAssertAllStep(){
        smavaWebAnalyticsUtility.AssertAll();
     }
