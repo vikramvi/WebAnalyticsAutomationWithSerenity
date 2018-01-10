@@ -29,18 +29,13 @@ public class SmavaWebAnalyticsUtility extends PageObject {
 
     //Method to keep track of GTM objects count of each page
     public void fetchGTMObjectsForGivenPage() {
-        try {
-                JavascriptExecutor js = (JavascriptExecutor) getDriver();
+            JavascriptExecutor js = (JavascriptExecutor) getDriver();
 
-                ArrayList<Map<String, String>> GTMObjectsList = new ArrayList<>();
+            ArrayList<Map<String, String>> GTMObjectsList = new ArrayList<>();
 
-                GTMObjectsList = (ArrayList) js.executeScript("return window.smavaGoTaMa2016");
+            GTMObjectsList = (ArrayList) js.executeScript("return window.smavaGoTaMa2016");
 
-                GTMObjectsCountForParticularPage = GTMObjectsList.size();
-
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
+            GTMObjectsCountForParticularPage = GTMObjectsList.size();
     }
 
     //Method to get GTM objects for particular event on particular page
@@ -54,7 +49,7 @@ public class SmavaWebAnalyticsUtility extends PageObject {
 
     //Method to get GTM objects unique to particular page
     public boolean fetchGTMObjectsForGivenPage(String pageName){
-        try{
+
                 localPageName = pageName;
 
                 JavascriptExecutor js = (JavascriptExecutor)getDriver();
@@ -102,40 +97,33 @@ public class SmavaWebAnalyticsUtility extends PageObject {
                 for(int a=0; a < GTMObjectsList.size(); a++) {
                     try {
 
-                           //multimap.clear();
-                           multimapForParticularEvent.clear();
+                               multimapForParticularEvent.clear();
 
-                           if(a >= oldGTMCount) {
-                               System.out.println("-----------------  Key Index = " + a);
-                               //multimap.put(Integer.toString(a), Integer.toString( myList.get(a).size() ) );
-                                   for (String key : GTMObjectsList.get(a).keySet()) {
+                               if(a >= oldGTMCount) {
+                                   System.out.println("-----------------  Key Index = " + a);
 
-                                       System.out.println(key + "      " + String.valueOf(GTMObjectsList.get(a).get(key)));
+                                       for (String key : GTMObjectsList.get(a).keySet()) {
 
-                                       multimap.put(key, String.valueOf(GTMObjectsList.get(a).get(key)));
-                                       multimapForParticularEvent.put(key, String.valueOf(GTMObjectsList.get(a).get(key)));
-                                   }
-                           }
+                                           System.out.println(key + "      " + String.valueOf(GTMObjectsList.get(a).get(key)));
 
-
-                           if(localEventName != null) {
-                               if (isValuePresent(multimapForParticularEvent, "event", localEventName)) {
-
-                                   lastPageName = localPageName;
-                                   return true;
+                                           multimap.put(key, String.valueOf(GTMObjectsList.get(a).get(key)));
+                                           multimapForParticularEvent.put(key, String.valueOf(GTMObjectsList.get(a).get(key)));
+                                       }
                                }
-                           }
 
 
-                    }catch (Exception e){
-                        //e.printStackTrace();
+                               if(localEventName != null) {
+                                   if (isValuePresent(multimapForParticularEvent, "event", localEventName)) {
+
+                                       lastPageName = localPageName;
+                                       return true;
+                                   }
+                               }
+
+                    }catch (ClassCastException exception){
                         continue;
                     }
                 }
-
-
-                //---------------  Verification Step --------------
-
 
                 //https://stackoverflow.com/questions/3934470/how-to-iterate-through-google-multimap
                 for(Object key : multimap.keySet()){
@@ -144,11 +132,12 @@ public class SmavaWebAnalyticsUtility extends PageObject {
 
                 lastPageName = localPageName;
 
-                return true;
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
+                if(GTMObjectsList.size() > 0){
+                    return true;
+                }else{
+                    return false;
+                }
+
     }
 
     public void verifyGTM_KeyValuePair(List<List<String>> data){

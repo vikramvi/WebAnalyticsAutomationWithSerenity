@@ -1,39 +1,27 @@
 package de.smava.cucumber.pages;
 
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.NoSuchElementException;
+
+
+import java.util.concurrent.TimeUnit;
 
 public class OfferPage extends PageObject {
 
-    @FindBy(xpath="//div[contains(text(),\"In wenigen Schritten zu Ihrem Kredit\")]")
-    WebElement InWenigenSchrittenZuIhremKreditTitle;
-
     @FindBy(xpath="//div[@class=\"icon-checkmark2\"]")
-    WebElement GreenCheckMark;
+    WebElementFacade GreenCheckMark;
 
     public boolean isOfferPageLoadedSuccessfully(){
         try{
-             int timeCounter = 0;
+             int explicitWaitTimeout = 120;
 
-             while (timeCounter <= 20) {
+             GreenCheckMark.withTimeoutOf(explicitWaitTimeout, TimeUnit.SECONDS).waitUntilVisible();
 
-                 if ( getDriver().findElements(By.xpath("//div[contains(text(),\"In wenigen Schritten zu Ihrem Kredit\")]")).size() > 0
-                         &&
-                      getDriver().findElements(By.xpath("//div[@class=\"icon-checkmark2\"]")).size() > 0) {
-                     return true;
-                 } else {
-                     timeCounter++;
-                     Thread.sleep(1000);
-                     continue;
-                 }
-             }
+             return true;
 
-             return  false;
-
-        }catch (Exception e){
-            e.printStackTrace();
+        }catch (NoSuchElementException e){
             return  false;
         }
     }
