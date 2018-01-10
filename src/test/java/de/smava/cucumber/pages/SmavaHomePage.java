@@ -1,9 +1,7 @@
 package de.smava.cucumber.pages;
 
-import java.security.Key;
 import java.util.*;
 
-//import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
 import org.openqa.selenium.JavascriptExecutor;
 import net.serenitybdd.core.annotations.findby.By;
 import net.thucydides.core.annotations.DefaultUrl;
@@ -14,7 +12,6 @@ import org.openqa.selenium.support.FindBy;
 
 import org.assertj.core.api.SoftAssertions;
 
-@DefaultUrl("https://www.smava.de/")
 public class SmavaHomePage extends PageObject{
 
     @FindBy(xpath="//*[@id=\"myselect\"]/div/div[@class='text']")

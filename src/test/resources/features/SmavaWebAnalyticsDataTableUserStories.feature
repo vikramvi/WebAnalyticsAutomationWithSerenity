@@ -15,15 +15,15 @@ Scenario: User verifies GTM objects on Smava Home Page
                 |   flow               | Comparison            |
                 |   site_title         | smava Kreditvergleich |
           And User checks CreditComparisonRoute event on SmavaHomePage for non empty GTM objects from datatable
-                | channel |
-                |  embedded |
-                | flow      |
-                | gtm.uniqueEventId |
-                | marketingPartnerName |
-                | requested_amount     |
-                | site_title           |
-                | timestamp             |
-                | userRole             |
+                |  channel             |
+                |  embedded            |
+                |  flow                |
+                |  gtm.uniqueEventId   |
+                |  marketingPartnerName|
+                |  requested_amount    |
+                |  site_title          |
+                |  timestamp           |
+                |  userRole            |
           And User checks ordering of events getting fired
                 | smavaWonderland | gtm.js |
           Then User verifies values of GTM on each of the pages
