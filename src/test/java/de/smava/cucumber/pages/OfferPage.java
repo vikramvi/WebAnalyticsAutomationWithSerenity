@@ -21,8 +21,8 @@ public class OfferPage extends PageObject {
 
              return true;
 
-        }catch (NoSuchElementException e){
-            return  false;
+        }catch(NoSuchElementException e){
+             return false;
         }
     }
 

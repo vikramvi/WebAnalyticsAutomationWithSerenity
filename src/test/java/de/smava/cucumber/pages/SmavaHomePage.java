@@ -7,6 +7,7 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -84,29 +85,23 @@ public class SmavaHomePage extends PageObject{
                 return true;
             }
             return false;
-        }catch(Exception e){
-            e.printStackTrace();
-            return  false;
+        }catch(NoSuchElementException e){
+            return false;
         }
     }
 
     public int isValidLoanAmount(int loanAmount){
-        try{
-               List<WebElement> options = getDriver().findElements(By.xpath(NettokreditbetragValuesListXpath));
+           List<WebElement> options = getDriver().findElements(By.xpath(NettokreditbetragValuesListXpath));
 
-               int cnt = 0;
-               for(WebElement opt : options){
-                   cnt++;
-                   System.out.println( opt.getAttribute("data-value") );
-                   if(opt.getAttribute("data-value").equals(String.valueOf(loanAmount))){
-                       return cnt;
-                   }
+           int cnt = 0;
+           for(WebElement opt : options){
+               cnt++;
+               System.out.println( opt.getAttribute("data-value") );
+               if(opt.getAttribute("data-value").equals(String.valueOf(loanAmount))){
+                   return cnt;
                }
-               return 999;
-        }catch (Exception e){
-            e.printStackTrace();
-            return 999;
-        }
+           }
+           return 999;
     }
 
     public boolean selectLaufzeitValue(int value){
@@ -119,14 +114,12 @@ public class SmavaHomePage extends PageObject{
             }
 
             return false;
-        }catch(Exception e){
-            e.printStackTrace();
-            return  false;
+        }catch(NoSuchElementException e){
+            return false;
         }
     }
 
     public int isValidLaufzeit(int value) {
-        try{
             List<WebElement> options = getDriver().findElements(By.xpath(LaufZeitValuesListXpath));
 
             int cnt = 0;
@@ -137,12 +130,7 @@ public class SmavaHomePage extends PageObject{
                     return cnt;
                 }
             }
-
             return 999;
-        }catch(Exception e){
-            e.printStackTrace();
-            return 999;
-        }
     }
 
     public boolean selectVerwendungValue(String value){
@@ -151,30 +139,25 @@ public class SmavaHomePage extends PageObject{
 
             getDriver().findElement(By.xpath(VerwendungSelectionXpath.replaceAll("REPLACE_ME", String.valueOf(isValidVerwendung(value))) )).click();
             return true;
-        }catch(Exception e){
-            e.printStackTrace();
-            return  false;
+        }catch(NoSuchElementException e){
+            return false;
         }
     }
 
     public int isValidVerwendung(String value) {
-       try{
-           List<WebElement> options = getDriver().findElements(By.xpath(VerwendungValuesListXpath));
 
-           int cnt = 0;
-           for(WebElement opt : options){
-               cnt++;
-               System.out.println( opt.getText() );
-               if( opt.getText().equals(value) ){
-                   return cnt;
-               }
+       List<WebElement> options = getDriver().findElements(By.xpath(VerwendungValuesListXpath));
+
+       int cnt = 0;
+       for(WebElement opt : options){
+           cnt++;
+           System.out.println( opt.getText() );
+           if( opt.getText().equals(value) ){
+               return cnt;
            }
-
-           return 999;
-       }catch(Exception e){
-           e.printStackTrace();
-           return 999;
        }
+
+       return 999;
     }
 
     public boolean clickJetztVergleichenToStartWithKreditStep(){
@@ -189,26 +172,24 @@ public class SmavaHomePage extends PageObject{
              }else{
                  return false;
              }
-        }catch(Exception e){
-            e.printStackTrace();
+        }catch(NoSuchElementException e){
             return false;
         }
     }
 
     public boolean enterLoginDetailsAndSubmit(String emailId, String password){
         try{
-            getDriver().manage().window().maximize();
-            AnmeldenButton.click();
+                getDriver().manage().window().maximize();
+                AnmeldenButton.click();
 
-            if(EmailInputField.isEnabled()){
-                EmailInputField.sendKeys(emailId);
-                PasswordInputField.sendKeys(password);
-                AnmeldenButtonFromLoginDialog.click();
-                return true;
-            }
-            return false;
-        }catch(Exception e){
-            e.printStackTrace();
+                if(EmailInputField.isEnabled()){
+                    EmailInputField.sendKeys(emailId);
+                    PasswordInputField.sendKeys(password);
+                    AnmeldenButtonFromLoginDialog.click();
+                    return true;
+                }
+                return false;
+        }catch(NoSuchElementException e){
             return false;
         }
 
