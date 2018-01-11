@@ -39,6 +39,12 @@ public class SmavaWebAnalyticsUtilitySteps extends ScenarioSteps{
     }
 
     @Step
+    public void verifyGTMDataForParticularSmavaPage_KeyIsNotPresent(String pageName, List<List<String>> data){
+        assertThat( smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage(pageName) ).isTrue();
+        smavaWebAnalyticsUtility.verifyGTM_KeyIsNotPresent(data);
+    }
+
+    @Step
     public void updateGTMCountForParticularPage(){
         smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage();
     }

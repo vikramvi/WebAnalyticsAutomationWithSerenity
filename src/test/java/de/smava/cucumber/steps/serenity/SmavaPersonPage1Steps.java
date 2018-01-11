@@ -40,6 +40,11 @@ public class SmavaPersonPage1Steps extends ScenarioSteps {
     }
 
     @Step
+    public void completePersonPage1StepsWithExistingEmail(){
+        personStep1Page.fillPersonStep1PageInfoAndGotoNextPageWithSameEmailId();
+    }
+
+    @Step
     public void verifyGTMDataForSmavaPersonPage1Steps(){
         assertThat( personStep1Page.isPersonStep1PageLoaded() ).isTrue();
         assertThat( smavaWebAnalyticsUtility.fetchGTMObjectsForGivenPage("SmavaPersonStep1Page") ).isTrue();

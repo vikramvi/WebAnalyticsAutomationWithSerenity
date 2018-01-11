@@ -49,6 +49,11 @@ public class SmavaHomePageSteps extends ScenarioSteps {
     }
 
     @Step
+    public void closeBrowser(){
+        getDriver().close();
+    }
+
+    @Step
     public void open_smava_home_page(){
         smavaHomePage.open();
         getDriver().manage().window().maximize();

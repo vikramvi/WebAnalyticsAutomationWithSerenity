@@ -329,3 +329,49 @@ Scenario: User checks flow key value on smava registration flow pages
           When  User verifies GTM Objects key value pair on each of the registration route pages
                 |   flow              |         V1              |
           Then  User verifies values of GTM on each of the pages
+
+Scenario: User verifies GTM objects on Smava Registration Route Person Step2 Page
+          Given User goes to Smava Registration Route Person Step2 Page Using Existing EmailId
+          When  User checks SmavaPersonStep2Page for GTM objects key value pair with datatable
+                |   event             |     account_created     |
+                |   event             |     Lead                |
+                |   event             |   registration_page     |
+                |   flow              |       V1                |
+                |   pageId            |     Address2            |
+                |   pageNo            |        3                |
+                |   pageTitle         |      Person             |
+                | requested_amount    |      500                |
+                | requested_duration  |      84                 |
+                | requested_category  |      888                |
+                | leadCycleState      | APPLICATION_INCOMPLETE  |
+          And User closes browser
+          And User goes to Smava Registration Route Person Step2 Page Using Existing EmailId
+          And User checks user_recognized event on SmavaPersonStep2Page for non empty GTM objects from datatable
+                |  accountId                   |
+                |  affiliateId                 |
+                |  channel                     |
+                |  currentLoanApplicationId    |
+                |  event                       |
+                |  flow                        |
+                |  gtm.uniqueEventId           |
+                |  leadCycleLastTouchpoint     |
+                |  leadCycleLoanApplicationId  |
+                |  leadCycleState              |
+                |  marketingPartnerName        |
+                |  pageNo                      |
+                |  pageTitle                   |
+                |  placementId                 |
+                |  requested_amount            |
+                |  requested_category          |
+                |  requested_duration          |
+                |  subaffiliateId              |
+                |  timestamp                   |
+                |  userRole                    |
+          And User checks SmavaPersonStep2Page for GTM objects key value pair with datatable
+                |  event            |  user_recognized        |
+                |  event            |  no_new_lead            |
+                |  event            |  registration_page      |
+                |  leadCycleState   |  APPLICATION_INCOMPLETE |
+          And User checks SmavaPersonStep2Page for GTM objects does not have key entry
+                |  event            |  account_created        |
+          Then User verifies values of GTM on each of the pages

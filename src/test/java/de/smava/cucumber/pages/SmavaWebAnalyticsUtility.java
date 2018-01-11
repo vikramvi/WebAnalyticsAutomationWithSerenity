@@ -111,11 +111,14 @@ public class SmavaWebAnalyticsUtility extends PageObject {
                                        }
                                }
 
-
+                               //This code block is useful when GTM objects under particular event type needs to be checked for non null values
                                if(localEventName != null) {
                                    if (isValuePresent(multimapForParticularEvent, "event", localEventName)) {
 
                                        lastPageName = localPageName;
+                                       //reset as method may be called again in same user story and results in incomplete GTM objects extraction
+                                       localEventName = null;
+
                                        return true;
                                    }
                                }
@@ -143,14 +146,24 @@ public class SmavaWebAnalyticsUtility extends PageObject {
     public void verifyGTM_KeyValuePair(List<List<String>> data){
         for(int i=0; i < data.size(); i++) {
 
-            softAssertions.assertThat(isValuePresent(multimap, data.get(i).get(0), data.get(i).get(1))).as(localPageName +" " + data.get(i).get(0)).isEqualTo(true);
+            softAssertions.assertThat(isValuePresent(multimap, data.get(i).get(0), data.get(i).get(1))).as("Key-Value Check For " + localPageName +" : " + data.get(i).get(0) + " - " + data.get(i).get(1) ).isEqualTo(true);
+
         }
     }
 
     public void verifyGTM_ValueIsNotNull(List<List<String>> data){
         for(int i=0; i < data.size(); i++) {
 
-            softAssertions.assertThat(checkForEmptyValue(multimapForParticularEvent, data.get(i).get(0))).as(localPageName +" " + data.get(i).get(0)).isEqualTo(true);
+            softAssertions.assertThat(checkForEmptyValue(multimapForParticularEvent, data.get(i).get(0))).as("Value Is Not Null Check For " + localPageName +" : " + data.get(i).get(0) ).isEqualTo(true);
+
+        }
+    }
+
+    public void verifyGTM_KeyIsNotPresent(List<List<String>> data){
+        for(int i=0; i < data.size(); i++) {
+
+            softAssertions.assertThat( isValuePresent(multimap, data.get(i).get(0), data.get(i).get(1))).as("Key Not Present Check For " + localPageName +" : " + data.get(i).get(1) ).isEqualTo(false);
+
         }
     }
 

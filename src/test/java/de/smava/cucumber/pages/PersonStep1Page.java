@@ -40,6 +40,7 @@ public class PersonStep1Page extends PageObject {
     public static final String geburtsdatum = "02.02.1972";
     public static final String telefon = "015215215263";
     public static final String emailPrefix = "darth.vader.smava";
+    public static String emailForReuse = null;
 
 
     public void fillPersonStep1PageInfoAndGotoNextPage(){
@@ -53,6 +54,16 @@ public class PersonStep1Page extends PageObject {
         clickWeiterbutton();
     }
 
+    public void fillPersonStep1PageInfoAndGotoNextPageWithSameEmailId(){
+        clickHerrButton();
+        enterVorname();
+        enterNachname();
+        enterGeburtsdatum();
+        enterTelefon();
+        enterExistingEmail();
+        clickSchufaCheckBox();
+        clickWeiterbutton();
+    }
 
     public void clickHerrButton(){
         HerrButton.click();
@@ -78,9 +89,18 @@ public class PersonStep1Page extends PageObject {
     public void enterEmail(){
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         Date date = new Date();
-        System.out.println(dateFormat.format(date));
 
         EmailInputField.sendKeys(emailPrefix + dateFormat.format(date) + "@gmail.com");
+    }
+
+    public void enterExistingEmail(){
+        if( emailForReuse == null ){
+            DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+            Date date = new Date();
+            emailForReuse = emailPrefix +  dateFormat.format(date) + "@gmail.com";
+        }
+
+        EmailInputField.sendKeys(emailForReuse);
     }
 
     public void clickSchufaCheckBox(){

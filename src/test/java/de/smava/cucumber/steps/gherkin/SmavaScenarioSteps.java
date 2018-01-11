@@ -209,6 +209,12 @@ public class SmavaScenarioSteps {
         smavaWebAnalyticsUtilitySteps.verifyGTMDataForParticularSmavaPage_AgainstNonEmptyValues(eventName, pageName, data);
     }
 
+    @When("User checks (.*) for GTM objects does not have key entry")
+    public void checkGTMObjectsForEventNotPresent(String pageName, DataTable testData){
+        List<List<String>> data = testData.raw();
+        smavaWebAnalyticsUtilitySteps.verifyGTMDataForParticularSmavaPage_KeyIsNotPresent(pageName, data);
+    }
+
     @When("User checks ordering of events getting fired")
     public void checkEventsOrdering(DataTable testData){
         List<List<String>> data = testData.raw();
@@ -304,6 +310,29 @@ public class SmavaScenarioSteps {
         smavaOfferPageSteps.isOfferPageLoadedSuccessfully();
         smavaOfferPageSteps.verifyGTMDataForSmavaOfferPage();
     }
+
+    @When("User closes browser")
+    public void closeBrowser(){
+        smavaHomePageCucumberSteps.closeBrowser();
+    }
+
+    @When("User goes to Smava Registration Route Person Step2 Page Using Existing EmailId")
+    public void gotoSmavaPersonStep2PageWithExistingEmailId(){
+        smavaWebAnalyticsUtilitySteps.createSoftAssertionObject();
+
+        smavaHomePageCucumberSteps.open_smava_home_page();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
+        smavaHomePageCucumberSteps.user_enters_loanSearchInfo();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
+        smavaKreditPageSteps.completeKreditPageSteps();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
+        smavaPersonPage1Steps.completePersonPage1StepsWithExistingEmail();
+        smavaPersonPage2Steps.isPersonPage2StepCompletelyLoaded();
+    }
+
 
     //--------------------------- THEN -----------------------------------
 
