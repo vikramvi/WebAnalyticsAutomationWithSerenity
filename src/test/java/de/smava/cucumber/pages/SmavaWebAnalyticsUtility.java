@@ -13,6 +13,7 @@ import java.util.Set;
 
 public class SmavaWebAnalyticsUtility extends PageObject {
 
+    private static final String GTMScript = "return window.smavaGoTaMa2016";
     private static SoftAssertions softAssertions = null;
     private static Multimap<String, String> multimap, multimapForParticularEvent;
     private static int GTMObjectsCountForParticularPage = 0, oldGTMCount = 0;
@@ -33,7 +34,7 @@ public class SmavaWebAnalyticsUtility extends PageObject {
 
             ArrayList<Map<String, String>> GTMObjectsList = new ArrayList<>();
 
-            GTMObjectsList = (ArrayList) js.executeScript("return window.smavaGoTaMa2016");
+            GTMObjectsList = (ArrayList) js.executeScript(GTMScript);
 
             GTMObjectsCountForParticularPage = GTMObjectsList.size();
     }
@@ -56,7 +57,7 @@ public class SmavaWebAnalyticsUtility extends PageObject {
 
                 ArrayList<Map<String, String>> GTMObjectsList = new ArrayList<>();
 
-                GTMObjectsList =  (ArrayList) js.executeScript("return window.smavaGoTaMa2016");
+                GTMObjectsList =  (ArrayList) js.executeScript(GTMScript);
 
 
                 //HashMap don’t allow duplicate keys
