@@ -330,7 +330,7 @@ Scenario: User checks flow key value on smava registration flow pages
                 |   flow              |         V1              |
           Then  User verifies values of GTM on each of the pages
 
-Scenario: User verifies GTM objects on Smava Registration Route Person Step2 Page
+Scenario: User verifies GTM objects on Smava Registration Route Person Step2 Page For Already Recognized User
           Given User goes to Smava Registration Route Person Step2 Page Using Existing EmailId
           When  User checks SmavaPersonStep2Page for GTM objects key value pair with datatable
                 |   event             |     account_created     |

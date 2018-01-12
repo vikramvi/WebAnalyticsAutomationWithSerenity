@@ -28,3 +28,7 @@
 2. mvn clean verify -Dcucumber.options="src/test/resources/features/SmavaWebAnalyticsDataTableUserStories.feature"
 
    This will run **individual use story** for each of the pages under registration route with data table
+   
+3. Docker container run
+
+   mvn clean verify -Dcucumber.options="src/test/resources/features/SmavaWebAnalyticsDataTableUserStories.feature" -Dwebdriver.remote.url=http://0.0.0.0:4444/wd/hub -Dwebdriver.remote.os=LINUX   
