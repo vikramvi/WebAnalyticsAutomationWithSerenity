@@ -311,9 +311,9 @@ public class SmavaScenarioSteps {
         smavaOfferPageSteps.verifyGTMDataForSmavaOfferPage();
     }
 
-    @When("User closes browser")
-    public void closeBrowser(){
-        smavaHomePageCucumberSteps.closeBrowser();
+    @When("User closes existing tab and opens new tab")
+    public void openNewTabAndCloseExistingOne(){
+        smavaHomePageCucumberSteps.openNewTabAndCloseExisting();
     }
 
     @When("User goes to Smava Registration Route Person Step2 Page Using Existing EmailId")
@@ -329,7 +329,26 @@ public class SmavaScenarioSteps {
         smavaKreditPageSteps.completeKreditPageSteps();
         smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
 
-        smavaPersonPage1Steps.completePersonPage1StepsWithExistingEmail();
+        boolean isCookiesSet = false;
+        smavaPersonPage1Steps.completePersonPage1StepsWithExistingEmail(isCookiesSet);
+        smavaPersonPage2Steps.isPersonPage2StepCompletelyLoaded();
+    }
+
+    @When("User goes to SmavaPersonStep2Page with cookies already set")
+    public void useExistingEmailId(){
+        smavaWebAnalyticsUtilitySteps.createSoftAssertionObject();
+
+        smavaHomePageCucumberSteps.openProvidedURL();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
+        smavaHomePageCucumberSteps.user_enters_loanSearchInfo();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
+        smavaKreditPageSteps.completeKreditPageSteps();
+        smavaWebAnalyticsUtilitySteps.updateGTMCountForParticularPage();
+
+        boolean isCookiesSet = true;
+        smavaPersonPage1Steps.completePersonPage1StepsWithExistingEmail(isCookiesSet);
         smavaPersonPage2Steps.isPersonPage2StepCompletelyLoaded();
     }
 

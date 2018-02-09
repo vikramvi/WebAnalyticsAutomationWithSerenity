@@ -344,8 +344,8 @@ Scenario: User verifies GTM objects on Smava Registration Route Person Step2 Pag
                 | requested_duration  |      84                 |
                 | requested_category  |      888                |
                 | leadCycleState      | APPLICATION_INCOMPLETE  |
-          And User closes browser
-          And User goes to Smava Registration Route Person Step2 Page Using Existing EmailId
+          And User closes existing tab and opens new tab
+          And User goes to SmavaPersonStep2Page with cookies already set
           And User checks user_recognized event on SmavaPersonStep2Page for non empty GTM objects from datatable
                 |  accountId                   |
                 |  affiliateId                 |

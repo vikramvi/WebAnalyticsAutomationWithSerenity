@@ -1,5 +1,9 @@
 package de.smava.cucumber.steps.serenity;
 
+import net.thucydides.core.util.EnvironmentVariables;
+import net.thucydides.core.util.SystemEnvironmentVariables;
+import org.openqa.selenium.JavascriptExecutor;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 import net.thucydides.core.annotations.Step;
@@ -49,9 +53,21 @@ public class SmavaHomePageSteps extends ScenarioSteps {
     }
 
     @Step
-    public void closeBrowser(){
+    public void openNewTabAndCloseExisting(){
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        js.executeScript("window.open()");
+        ArrayList<String> tabs = new ArrayList<String>(getDriver().getWindowHandles());
+        getDriver().switchTo().window(tabs.get(0));
         getDriver().close();
+        getDriver().switchTo().window(tabs.get(1));
     }
+
+    @Step
+    public void openProvidedURL(){
+        EnvironmentVariables variables = SystemEnvironmentVariables.createEnvironmentVariables();
+        getDriver().get( variables.getProperty("webdriver.base.url") );
+    }
+
 
     @Step
     public void open_smava_home_page(){

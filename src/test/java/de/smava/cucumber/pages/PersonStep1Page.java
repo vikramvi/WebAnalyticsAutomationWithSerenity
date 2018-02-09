@@ -54,15 +54,22 @@ public class PersonStep1Page extends PageObject {
         clickWeiterbutton();
     }
 
-    public void fillPersonStep1PageInfoAndGotoNextPageWithSameEmailId(){
-        clickHerrButton();
-        enterVorname();
-        enterNachname();
-        enterGeburtsdatum();
-        enterTelefon();
-        enterExistingEmail();
-        clickSchufaCheckBox();
-        clickWeiterbutton();
+    //https://github.com/serenity-bdd/serenity-core/issues/1116
+    //https://intranet.smava.de/jira/browse/WEB-450
+    public void fillPersonStep1PageInfoAndGotoNextPageWithSameEmailId(boolean isCookiesSet){
+        if(!isCookiesSet) {
+            clickHerrButton();
+            enterVorname();
+            enterNachname();
+            enterGeburtsdatum();
+            enterTelefon();
+            enterExistingEmail();
+            clickSchufaCheckBox();
+            clickWeiterbutton();
+        }else{
+            clickSchufaCheckBox();
+            clickWeiterbutton();
+        }
     }
 
     public void clickHerrButton(){

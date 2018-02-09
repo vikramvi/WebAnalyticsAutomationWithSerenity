@@ -40,8 +40,8 @@ public class SmavaPersonPage1Steps extends ScenarioSteps {
     }
 
     @Step
-    public void completePersonPage1StepsWithExistingEmail(){
-        personStep1Page.fillPersonStep1PageInfoAndGotoNextPageWithSameEmailId();
+    public void completePersonPage1StepsWithExistingEmail(boolean isCookiesSet){
+        personStep1Page.fillPersonStep1PageInfoAndGotoNextPageWithSameEmailId(isCookiesSet);
     }
 
     @Step
