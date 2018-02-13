@@ -24,11 +24,20 @@
 
    This will run **single user story** which executes whole of registration route to check analytics on each of the pages 
 
-
 2. mvn clean verify -Dcucumber.options="src/test/resources/features/SmavaWebAnalyticsDataTableUserStories.feature"
 
    This will run **individual use story** for each of the pages under registration route with data table
-   
-3. Docker container run
+      
+3. **Docker container** run
 
-   mvn clean verify -Dcucumber.options="src/test/resources/features/SmavaWebAnalyticsDataTableUserStories.feature" -Dwebdriver.remote.url=http://0.0.0.0:4444/wd/hub -Dwebdriver.remote.os=LINUX   
+   mvn clean verify -Dcucumber.options="src/test/resources/features/SmavaWebAnalyticsDataTableUserStories.feature" -Dwebdriver.remote.url=http://0.0.0.0:4444/wd/hub -Dwebdriver.remote.os=LINUX 
+   
+4. __Block 3rd Party Cookies__
+
+   mvn -e clean install -Dcucumber.options="src/test/resources/features/SmavaWebAnalyticsDataTableUserStories.feature" -Dchrome_preferences.profile.block_third_party_cookies="true"
+
+5. __Block all Cookies__
+
+   mvn -e clean install -Dcucumber.options="src/test/resources/features/SmavaWebAnalyticsDataTableUserStories.feature" -Dchrome_preferences.profile.block_third_party_cookies="true" -Dchrome_preferences.profile.default_content_setting_values.cookies=2
+
+     
