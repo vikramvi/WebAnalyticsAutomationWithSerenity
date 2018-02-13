@@ -17,6 +17,9 @@ import java.util.List;
 
 public class SmavaHomePageSteps extends ScenarioSteps {
 
+    EnvironmentVariables variables;
+    String urlSerenityProperty = "webdriver.base.url";
+
     //----------- PageObjects --------------
 
     private SmavaHomePage smavaHomePage;
@@ -63,11 +66,15 @@ public class SmavaHomePageSteps extends ScenarioSteps {
     }
 
     @Step
-    public void openProvidedURL(){
-        EnvironmentVariables variables = SystemEnvironmentVariables.createEnvironmentVariables();
-        getDriver().get( variables.getProperty("webdriver.base.url") );
+    public String getSerenityPropertyValue(String propertyName){
+        variables = SystemEnvironmentVariables.createEnvironmentVariables();
+        return variables.getProperty(propertyName);
     }
 
+    @Step
+    public void openProvidedURL(){
+        getDriver().get( getSerenityPropertyValue(urlSerenityProperty) );
+    }
 
     @Step
     public void open_smava_home_page(){
